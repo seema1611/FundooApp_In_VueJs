@@ -1,11 +1,11 @@
 <template>
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
-    name:'Home',
-}
+  name: "FundooAppMain",
+};
 </script>
 <style scoped>
 </style>

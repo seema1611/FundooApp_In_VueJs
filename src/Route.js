@@ -1,5 +1,7 @@
-import Login from './components/Login'
+import UserLogin from './components/UserLogin';
+import FundooAppMain from './components/FundooHome';
 
-export default[
-    {path:'/', component:Login}
+export default [
+    { path: '/', component: UserLogin },
+    { path: '/home', component: FundooAppMain }
 ]

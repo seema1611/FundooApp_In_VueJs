@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <Home/>
+    <FundooAppMain />
   </div>
 </template>
 
 <script>
-import Home from './components/Home'
+import FundooAppMain from "./components/FundooAppMain";
 export default {
-  name: 'App',
-  components:{
-    Home,
-  }
-}
+  name: "App",
+  components: {
+    FundooAppMain,
+  },
+};
 </script>
 
 <style>
@@ -19,6 +19,7 @@ export default {
   width: 100%;
   min-height: 750px;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   align-items: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
