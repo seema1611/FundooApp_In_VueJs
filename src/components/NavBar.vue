@@ -1,92 +1,131 @@
 <template>
-  <div id="dashboard">
-    <md-app>
-      <md-app-toolbar class="md-primary" md-elevation="0">
-        <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
-          <md-icon>menu</md-icon>
-        </md-button>
-        <span class="md-title">My Title</span>
-      </md-app-toolbar>
-
-      <md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
-        <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Navigation</span>
+  <div id="dashboard-container">
+    <div id="navbar-container">
+      <md-toolbar class="md-primary">
+        <div class="md-toolbar-row">
+          <div class="md-toolbar-section-start">
+            <md-button class="md-icon-button" @click="toggleMenu()">
+              <md-icon>menu</md-icon>
+            </md-button>
+            <span class="md-title">
+              <img v-bind:src="require('../assets/googlekeep.png')" /> Fundoo
+            </span>
+          </div>
+          
+          <md-autocomplete
+            class="search"
+            v-model="searchResult"
+            :md-options="noteList"
+            md-layout="box"
+          >
+            <label>Search...</label>
+          </md-autocomplete>
 
           <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button md-dense" @click="toggleMenu">
-              <md-icon>keyboard_arrow_left</md-icon>
+            <md-button class="md-icon-button">
+              <md-icon>person</md-icon>
             </md-button>
           </div>
-        </md-toolbar>
+        </div>
+      </md-toolbar>
+    </div>
+    <md-drawer
+      :md-active.sync="showMenu"
+      md-swipeable
+      md-persistent="mini"
+    >
+      <md-list>
+        <md-list-item>
+          <md-icon>emoji_objects</md-icon>
+          <span class="md-list-item-text">Notes</span>
+        </md-list-item>
 
-        <md-list>
-          <md-list-item>
-            <md-icon>emoji_objects</md-icon>
-            <span class="md-list-item-text">Notes</span>
-          </md-list-item>
+        <md-list-item>
+          <md-icon>notifications</md-icon>
+          <span class="md-list-item-text">Reminders</span>
+        </md-list-item>
 
-          <md-list-item>
-            <md-icon>notifications</md-icon>
-            <span class="md-list-item-text">Reminders</span>
-          </md-list-item>
+        <md-list-item>
+          <md-icon>edit</md-icon>
+          <span class="md-list-item-text">Edit Labels</span>
+        </md-list-item>
 
-          <md-list-item>
-            <md-icon>edit</md-icon>
-            <span class="md-list-item-text">Edit Labels</span>
-          </md-list-item>
+        <md-list-item>
+          <md-icon>archive</md-icon>
+          <span class="md-list-item-text">Archive</span>
+        </md-list-item>
 
-          <md-list-item>
-            <md-icon>archive</md-icon>
-            <span class="md-list-item-text">Archive</span>
-          </md-list-item>
-
-          <md-list-item>
-            <md-icon>delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
-          </md-list-item>
-
-        </md-list>
-
-        
-      </md-app-drawer>
-    </md-app>
+        <md-list-item>
+          <md-icon>delete</md-icon>
+          <span class="md-list-item-text">Trash</span>
+        </md-list-item>
+      </md-list>
+    </md-drawer>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'NavBar',
-    data: () => ({
-      menuVisible: false
-    }),
-    methods: {
-      toggleMenu () {
-        this.menuVisible = !this.menuVisible
+export default {
+  name: "NavBar",
+  data() {
+    return {
+      searchResult: null,
+      showMenu: false,
+      noteList: [],
+    };
+  },
+  methods: {
+    toggleMenu: function () {
+      if (this.showMenu == false) {
+        return (this.showMenu = true);
       }
-    }
-  }
+      this.showMenu = false;
+    },
+  },
+};
 </script>
 
-<style scoped>
 
-#dashboard {
+<style scoped>
+#dashboard-container {
   display: flex;
   width: 100%;
   flex-direction: column;
 }
 
-.md-app {
-  min-height: 350px;
-  border: 1px solid rgba(#000, .12);
+#navbar-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
 }
 
-.md-drawer {
-  width: 230px;
-  max-width: calc(100vw - 125px);
+.md-toolbar.md-theme-default.md-primary {
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 2px solid silver;
 }
-
-.md-list-item-text :hover {
-  color: blue;
+.md-icon {
+  color: black !important;
 }
-
+.search {
+  max-width: 650px;
+  background-color: rgb(243, 240, 240) !important;
+}
+.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box {
+  height: 50px;
+  border-radius: 7px;
+}
+.md-drawer.md-theme-default.md-persistent-mini.md-left {
+  width: 15%;
+  height: 684px;
+  margin-top: 1px;
+}
+.md-title {
+  color: grey !important;
+  margin-right: 20% !important;
+}
+img {
+  width: 12%;
+}
 </style>

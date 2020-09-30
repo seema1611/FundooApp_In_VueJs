@@ -1,13 +1,17 @@
 import axios from 'axios';
 
-const URL = 'http://fundoonotes.incubation.bridgelabz.com/api/user/login'
+const URL = process.env.VUE_APP_URL
 
 export default {
-    post(DTO) {
+    post(loginURL,DTO) {
         return axios({
             method: 'post',
-            url: `${URL}`,
-            data: DTO,
+            url: `${URL}/${loginURL}`,
+            data: DTO,  
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':localStorage.getItem('token')
+            }       
         })
     },
 }
