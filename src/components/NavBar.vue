@@ -28,6 +28,7 @@
             </md-button>
           </div>
         </div>
+        
       </md-toolbar>
     </div>
     <md-drawer
@@ -75,6 +76,7 @@ export default {
       noteList: [],
     };
   },
+
   methods: {
     toggleMenu: function () {
       if (this.showMenu == false) {
