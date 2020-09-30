@@ -2,8 +2,8 @@ import httpservice from './Httpservice';
 
 class FundooService {
 
-    getUserLoggedIn(loginData) {
-        return httpservice.post('user/login',loginData)
+    getUserLogin(loginDetails) {
+        return httpservice.post('user/login',loginDetails)
     }
 }
 

@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const URL = process.env.VUE_APP_URL
+const baseURL = process.env.VUE_APP_URL
 
 export default {
-    post(loginURL,DTO) {
+    post(loginURL,loginDTO) {
         return axios({
             method: 'post',
-            url: `${URL}/${loginURL}`,
-            data: DTO,  
+            url: `${baseURL}/${loginURL}`,
+            data: loginDTO,  
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization':localStorage.getItem('token')

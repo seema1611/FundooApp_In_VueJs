@@ -68,12 +68,12 @@ export default {
       if(this.password==""){
         return (this.hasEmailError = false),(this.hasPasswordError=true);
       }
-      const loginData = {
+      const loginDetails = {
         cartID: this.cartID,
         email: this.email,
         password: this.password,
       };
-      userService.getUserLoggedIn(loginData).then((response) => {
+      userService.getUserLogin(loginDetails).then((response) => {
         this.result = response.data;
         localStorage.setItem("token", response.data.id);
         setTimeout(() => this.$router.push("home"), 3000);
