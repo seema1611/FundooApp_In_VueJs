@@ -63,10 +63,13 @@
         </md-list-item>
       </md-list>
     </md-drawer>
+
+    <CreateNote />
   </div>
 </template>
 
 <script>
+import CreateNote from './CreateNote'
 export default {
   name: "NavBar",
   data() {
@@ -75,6 +78,10 @@ export default {
       showMenu: false,
       noteList: [],
     };
+  },
+
+  components:{
+    CreateNote
   },
 
   methods: {
