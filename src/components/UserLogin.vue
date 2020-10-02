@@ -34,7 +34,7 @@
       <div class="create-account">
         <a href="http://fundoonotes.incubation.bridgelabz.com">Create Account</a>
       </div>
-      <md-button class="md-raised md-primary" @click="login">Log In</md-button>
+      <md-button class="md-raised md-primary" @click="getLogin">Log In</md-button>
     </div>
 
     <router-view></router-view>
@@ -58,7 +58,7 @@ export default {
     };
   },
   methods: {
-    login: function () {
+    getLogin: function () {
       if (this.email == "" && this.password == "") {
         return (this.hasEmailError = true),(this.hasPasswordError=true);
       }
@@ -172,5 +172,24 @@ h3 {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .login-container {
+    width: 60%;
+    margin-top: 50px;
+  }
+}
+/* @media screen and (max-width: 420px) {
+  .login-container {
+    width: 88%;
+    margin-top: 50px;
+  }
+} */
+@media screen and (max-width: 260px) {
+  .login-container {
+    width: 90%;
+    margin-top: 50px;
+  }
 }
 </style>

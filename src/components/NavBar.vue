@@ -1,8 +1,7 @@
 <template>
-  <div id="dashboard-container">
-    <div id="navbar-container">
+  <div class="dashboard">
+    <div class="navbar">
       <md-toolbar class="md-primary">
-
         <div class="md-toolbar-row">
           <div class="md-toolbar-section-start">
             <md-button class="md-icon-button" @click="toggleMenu()">
@@ -12,7 +11,6 @@
               <img v-bind:src="require('../assets/googlekeep.png')" /> Fundoo
             </span>
           </div>
-
           <md-autocomplete
             class="search"
             v-model="searchResult"
@@ -28,48 +26,51 @@
             </md-button>
           </div>
         </div>
-        
       </md-toolbar>
     </div>
-    <md-drawer
-      :md-active.sync="showMenu"
-      md-swipeable
-      md-persistent="mini"
-    >
-      <md-list>
-        <md-list-item>
-          <md-icon>emoji_objects</md-icon>
-          <span class="md-list-item-text">Notes</span>
-        </md-list-item>
+    
+    <div class="navbar">
+      <md-drawer
+        :md-active.sync="showMenu"
+        md-swipeable
+        md-permanent="clipped"
+        md-persistent="mini"
+      >
+        <md-list>
+          <md-list-item>
+            <md-icon>emoji_objects</md-icon>
+            <span class="md-list-item-text">Notes</span>
+          </md-list-item>
 
-        <md-list-item>
-          <md-icon>notifications</md-icon>
-          <span class="md-list-item-text">Reminders</span>
-        </md-list-item>
+          <md-list-item>
+            <md-icon>notifications</md-icon>
+            <span class="md-list-item-text">Reminders</span>
+          </md-list-item>
 
-        <md-list-item>
-          <md-icon>edit</md-icon>
-          <span class="md-list-item-text">Edit Labels</span>
-        </md-list-item>
+          <md-list-item>
+            <md-icon>edit</md-icon>
+            <span class="md-list-item-text">Edit Labels</span>
+          </md-list-item>
 
-        <md-list-item>
-          <md-icon>archive</md-icon>
-          <span class="md-list-item-text">Archive</span>
-        </md-list-item>
+          <md-list-item>
+            <md-icon>archive</md-icon>
+            <span class="md-list-item-text">Archive</span>
+          </md-list-item>
 
-        <md-list-item>
-          <md-icon>delete</md-icon>
-          <span class="md-list-item-text">Trash</span>
-        </md-list-item>
-      </md-list>
-    </md-drawer>
-
-    <CreateNote />
+          <md-list-item>
+            <md-icon>delete</md-icon>
+            <span class="md-list-item-text">Trash</span>
+          </md-list-item>
+        </md-list>
+      </md-drawer>
+      <CreateNote />
+    </div>
   </div>
 </template>
 
 <script>
-import CreateNote from './CreateNote'
+import CreateNote from "./CreateNote";
+
 export default {
   name: "NavBar",
   data() {
@@ -80,8 +81,8 @@ export default {
     };
   },
 
-  components:{
-    CreateNote
+  components: {
+    CreateNote,
   },
 
   methods: {
@@ -96,17 +97,24 @@ export default {
 </script>
 
 <style scoped>
-#dashboard-container {
-  width: 100%;
+.dashboard {
   display: flex;
+  width: 100%;
   flex-direction: column;
 }
 
-#navbar-container {
-  width: 100%;
+.navbar {
   display: flex;
   flex-direction: row;
+  width: 100%;
   align-items: center;
+}
+
+.md-list-item:hover {
+  cursor: pointer;
+  background-color: rgb(212, 205, 205);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .md-toolbar.md-theme-default.md-primary {
@@ -119,13 +127,11 @@ export default {
   color: black !important;
 }
 
-img {
-  width: 12%;
-}
-
 .search {
   max-width: 650px;
-  background-color: gainsboro !important;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(243, 240, 240) !important;
 }
 
 .md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box {
@@ -144,4 +150,7 @@ img {
   margin-right: 20% !important;
 }
 
+img {
+  width: 12%;
+}
 </style>

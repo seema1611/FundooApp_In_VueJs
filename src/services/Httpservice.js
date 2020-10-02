@@ -14,4 +14,15 @@ export default {
             }       
         })
     },
+
+    get(fetechURL){
+        return axios({
+            method:'get',
+            url:`${baseURL}/${fetechURL}`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':localStorage.getItem('token')
+            } 
+        })
+    }
 }

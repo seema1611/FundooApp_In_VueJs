@@ -1,10 +1,10 @@
 import httpservice from './Httpservice';
 
-class FundooService {
+class UserService {
 
     getUserLogin(loginDetails) {
         return httpservice.post('user/login',loginDetails)
     }
 }
 
-export default new FundooService
+export default new UserService
