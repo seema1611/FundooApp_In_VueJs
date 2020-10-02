@@ -24,7 +24,7 @@
               <ColorPalette />
               <Archive />
             </span>
-            <button>Close</button>
+            <button @click="addNote()">Close</button>
           </div>
         </md-card>
       </div>
@@ -35,6 +35,7 @@
 <script>
 import ColorPalette from "./ColorPalette";
 import Archive from "./Archive";
+import NoteService from "../services/NoteService";
 
 export default {
   data() {
@@ -51,6 +52,19 @@ export default {
   },
 
   methods: {
+    addNote: function () {
+      const note = {
+        title: this.title,
+        description: this.description,
+      };
+      NoteService.getAddNote(note).then((response) => {
+        this.responseData = response.data;
+        this.title = "";
+        this.description = "";
+      });
+      this.isVisible = false;
+    },
+
     display : function () {
       this.isVisible = true;
     }
