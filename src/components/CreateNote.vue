@@ -29,6 +29,7 @@
         </md-card>
       </div>
     </div>
+    <DisplayNotes />
   </div>
 </template>
 
@@ -36,6 +37,7 @@
 import ColorPalette from "./ColorPalette";
 import Archive from "./Archive";
 import NoteService from "../services/NoteService";
+import DisplayNotes from "./DisplayNotes";
 
 export default {
   data() {
@@ -45,12 +47,11 @@ export default {
       description: "",
     };
   },
-
   components: {
     ColorPalette,
     Archive,
+    DisplayNotes,
   },
-
   methods: {
     addNote: function () {
       const note = {
@@ -64,7 +65,6 @@ export default {
       });
       this.isVisible = false;
     },
-
     display : function () {
       this.isVisible = true;
     }
@@ -96,40 +96,33 @@ export default {
   font-size: 18px;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
 }
-
 .header {
   display: none  !important;
   opacity: 0.1;
 }
-
 .md-card {
   padding: 4px;
   display: flex;
   flex-direction: column;
   box-shadow: none;
 }
-
 .md-field {
   font-weight: 600;
   margin: 0%;
   font-size: 16px;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
 }
-
 .notecard {
   display: none;
 }
-
 #notebox {
   width: 100%;
 }
-
 .notebox-icons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 .notebox-icons > button {
   width: 15%;
   font-size: 15px;
@@ -138,15 +131,12 @@ export default {
   cursor: pointer;
   background-color: transparent;
 }
-
 .md-field:after,
 .md-field:before {
   position: relative;
 }
-
 span {
   display: flex;
   flex-direction: row;
 }
-
 </style>

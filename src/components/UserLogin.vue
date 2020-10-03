@@ -176,19 +176,7 @@ h3 {
 
 @media screen and (max-width: 800px) {
   .login-container {
-    width: 60%;
-    margin-top: 50px;
-  }
-}
-/* @media screen and (max-width: 420px) {
-  .login-container {
-    width: 88%;
-    margin-top: 50px;
-  }
-} */
-@media screen and (max-width: 260px) {
-  .login-container {
-    width: 90%;
+    width: 65%;
     margin-top: 50px;
   }
 }
