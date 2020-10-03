@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard">
+        <router-view></router-view>
     <div class="navbar">
       <md-toolbar class="md-primary">
         <div class="md-toolbar-row">
