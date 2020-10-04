@@ -76,7 +76,7 @@ export default {
       userService.getUserLogin(loginDetails).then((response) => {
         this.result = response.data;
         localStorage.setItem("token", response.data.id);
-        setTimeout(() => this.$router.push("home"), 3000);
+        setTimeout(() => this.$router.push("home/note"), 3000);
       }),
         (error) => {
           console.log(error.message);

@@ -1,18 +1,17 @@
 <template>
-  <div class="archiev">
-    <md-icon>archive</md-icon>
+  <div class="color-palette">
+    <md-icon>palette</md-icon>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Archive",
+  name: "IconColorPalette",
 };
 </script>
 
 <style scoped>
-.archiev {
+.color-palette {
   cursor: pointer;
-  margin-left: 5px;
 }
 </style>

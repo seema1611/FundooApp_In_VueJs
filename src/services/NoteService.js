@@ -9,6 +9,10 @@ class NoteService {
     fetchNotesList(){
         return httpservice.get('notes/getNotesList')
     }
+
+    moveToTrash(trashData){
+        return httpservice.post('notes/trashNotes',trashData)
+    }
 }
 
 export default new NoteService

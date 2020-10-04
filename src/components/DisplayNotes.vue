@@ -1,71 +1,85 @@
 <template>
   <div class="display-notes">
-    <div class="note-cards" v-for="note in noteList" v-bind:key="note">
+    <div class="note-cards" v-for="note in noteList" v-bind:key="note.id">
       <md-card>
-        <label class="note-content">{{ note.title }}</label
-        ><br />
-        <label class="note-description note-content">{{ note.description }}</label
-        ><br />
-        <div class="note-item">
-          <ColorPalette />
-          <Archive />
-          <button>More</button>
+        <div class="card-items" @click="updateBoxData(note)">
+          <label class="content">{{ note.title }}</label
+          ><br />
+          <label class="description content">{{ note.description }}</label
+          ><br />
+        </div>
+        <div class="notebox-icons">
+          <IconColorPalette />
+          <IconArchive />
+          <DeleteNotes v-bind:note="note.id" />
         </div>
       </md-card>
     </div>
   </div>
 </template>
+
 <script>
-import NoteService from "../services/NoteService";
-import ColorPalette from "./ColorPalette";
-import Archive from "./Archive";
+import IconColorPalette from "./IconColorPalette";
+import IconArchive from "./IconArchive";
+import DeleteNotes from "./DeleteNotes";
+import { eventBus } from "../main";
 
 export default {
   name: "DisplayNotes",
+  props: ["noteList", "iconCategory"],
   data() {
     return {
-      noteList: [],
+      cardId: [],
+      showUpdateBox: false,
+      noteData: {},
     };
   },
   components: {
-    ColorPalette,
-    Archive,
+    IconColorPalette,
+    IconArchive,
+    DeleteNotes,
   },
+
   methods: {
-    fetchNotes: function () {
-      NoteService.fetchNotesList().then((response) => {
-        this.noteList = response.data.data.data;
-      });
+    updateBoxData: function (note) {
+      this.showUpdateBox = true;
+      this.noteData = note;
     },
   },
-  mounted() {
-    this.fetchNotes();
+  created() {
+    eventBus.$on("closeDialogBox", (data) => {
+      this.showUpdateBox = data;
+    });
   },
 };
 </script>
 <style scoped>
 .display-notes {
   display: flex;
-  margin-top: 2%;
-  margin-left: 18%;
+  margin-top: 1%;
+  margin-left: 16%;
   flex-direction: row;
-  max-width: 1000px;
-  min-width: 1000px;
+  width: 80%;
   flex-wrap: wrap;
+}
+
+.card-items {
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+  text-align: start;
+  padding: 10px;
 }
 
 .md-card {
   margin: 8px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5%;
-  height: min-content;
-  width: 190px;
-  text-align: start;
   padding: 18px;
+  width: 190px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 5%;
 }
-
-.note-content {
+.content {
   font-weight: bold;
   font-size: 18px;
   max-width: 90%;
@@ -74,26 +88,14 @@ export default {
   margin: 0px 0px 10px 0px;
 }
 
-.note-description {
+.description {
   font-size: 16px;
   font-weight: 500;
 }
 
-.note-item {
+.notebox-icons {
   display: flex;
   flex-direction: row;
-  /* align-items: flex-start; */
   justify-content: space-evenly;
-}
-
-button {
-    border: none;
-    background-color: white;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-button :hover {
-    background-color: gray;
 }
 </style>

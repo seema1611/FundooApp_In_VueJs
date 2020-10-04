@@ -15,10 +15,10 @@ export default {
         })
     },
 
-    get(fetechURL){
+    get(fetchURL){
         return axios({
             method:'get',
-            url:`${baseURL}/${fetechURL}`,
+            url:`${baseURL}/${fetchURL}`,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization':localStorage.getItem('token')

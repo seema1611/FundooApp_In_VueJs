@@ -21,23 +21,22 @@
 
           <div class="notebox-icons">
             <span>
-              <ColorPalette />
-              <Archive />
+              <IconColorPalette />
+              <IconArchive />
             </span>
             <button @click="addNote()">Close</button>
           </div>
         </md-card>
       </div>
     </div>
-    <DisplayNotes />
   </div>
 </template>
 
 <script>
-import ColorPalette from "./ColorPalette";
-import Archive from "./Archive";
+import IconColorPalette from "./IconColorPalette";
+import IconArchive from "./IconArchive";
 import NoteService from "../services/NoteService";
-import DisplayNotes from "./DisplayNotes";
+import {eventBus} from '../main'
 
 export default {
   data() {
@@ -48,11 +47,11 @@ export default {
     };
   },
   components: {
-    ColorPalette,
-    Archive,
-    DisplayNotes,
+    IconColorPalette,
+    IconArchive,
   },
   methods: {
+
     addNote: function () {
       const note = {
         title: this.title,
@@ -64,14 +63,16 @@ export default {
         this.description = "";
       });
       this.isVisible = false;
+      eventBus.$emit("getUpdatedNoteList");
     },
+
     display : function () {
       this.isVisible = true;
     }
   },
   created() {
     if (localStorage.getItem("token") == undefined) {
-      this.$router.push("/login");
+      this.$router.push("/");
     }
   },
 };
@@ -79,22 +80,20 @@ export default {
 
 <style scoped>
 #create-note-container {
-  width: 85%;
-  height: 684px;
+  width: 95%;
 }
 #note-mainpart {
+  align-items: flex-start;
+  justify-content: center;
   border-radius: 7px;
   width: 40%;
   margin-top: 5%;
-  align-items: flex-start;
-  justify-content: center;
-  cursor: text;
   margin-left: 35%;
-  box-shadow: 2px 3px 5px #e2e2e2;
+  box-shadow: 2px 3px 5px #a19f9f;
   padding: 10px;
   font-weight: 600;
   font-size: 18px;
-  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  cursor: text;
 }
 
 .header {
@@ -110,10 +109,8 @@ export default {
 }
 
 .md-field {
-  font-weight: 600;
-  margin: 0%;
   font-size: 16px;
-  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-weight: 600;
 }
 
 .notecard {

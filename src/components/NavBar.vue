@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard">
-        <router-view></router-view>
     <div class="navbar">
       <md-toolbar class="md-primary">
         <div class="md-toolbar-row">
@@ -29,7 +28,6 @@
         </div>
       </md-toolbar>
     </div>
-    
     <div class="navbar">
       <md-drawer
         :md-active.sync="showMenu"
@@ -38,39 +36,40 @@
         md-persistent="mini"
       >
         <md-list>
-          <md-list-item>
+          <md-list-item @click="goTo('Notes')" id="Notes">
             <md-icon>emoji_objects</md-icon>
             <span class="md-list-item-text">Notes</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item @click="goTo('Reminders')" id="Reminders">
             <md-icon>notifications</md-icon>
             <span class="md-list-item-text">Reminders</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item @click="goTo('Labels')" id="Labels">
             <md-icon>edit</md-icon>
             <span class="md-list-item-text">Edit Labels</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item @click="goTo('Archive')" id="Archive">
             <md-icon>archive</md-icon>
             <span class="md-list-item-text">Archive</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item @click="goTo('Trash')" id="Trash">
             <md-icon>delete</md-icon>
             <span class="md-list-item-text">Trash</span>
           </md-list-item>
         </md-list>
       </md-drawer>
-      <CreateNote />
+      <div class="component">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import CreateNote from "./CreateNote";
 export default {
   name: "NavBar",
   data() {
@@ -78,10 +77,8 @@ export default {
       searchResult: null,
       showMenu: false,
       noteList: [],
+      selected: "",
     };
-  },
-  components: {
-    CreateNote,
   },
   methods: {
     toggleMenu: function () {
@@ -90,56 +87,86 @@ export default {
       }
       this.showMenu = false;
     },
+    goTo: function (selectedOption) {
+      var styleproperty = document.getElementById(selectedOption).style;
+      if (this.selected.length != 0) {
+        document.getElementById(this.selected).setAttribute("style", "");
+      }
+      styleproperty.backgroundColor = "#888785";
+      styleproperty.borderTopRightRadius = "20px";
+      styleproperty.borderBottomRightRadius = "20px";
+      this.selected = selectedOption;
+      if (selectedOption == "Notes") {
+        this.$router.push("note");
+      }
+      if (selectedOption == "Trash") {
+        this.$router.push("trash");
+      }
+    },
   },
 };
 </script>
-
 <style scoped>
 .dashboard {
   display: flex;
   width: 100%;
   flex-direction: column;
 }
+
 .navbar {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
 }
+
 .md-list-item:hover {
   cursor: pointer;
-  background-color: rgb(212, 205, 205);
+  background-color: whitesmoke;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+
 .md-toolbar.md-theme-default.md-primary {
   background-color: transparent;
   box-shadow: none;
   border-bottom: 2px solid silver;
 }
+
 .md-icon {
   color: black !important;
 }
+
 .search {
-  max-width: 650px;
+  max-width: 44%;
   display: flex;
   flex-direction: row;
   background-color: rgb(243, 240, 240) !important;
 }
+
 .md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box {
   height: 50px;
   border-radius: 7px;
 }
+
 .md-drawer.md-theme-default.md-persistent-mini.md-left {
   width: 15%;
-  height: 684px;
-  margin-top: 1px;
+  min-height: 90vh;
 }
+
 .md-title {
   color: grey !important;
   margin-right: 20% !important;
 }
+
 img {
   width: 12%;
+}
+
+.component {
+  width: 85%;
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
 }
 </style>
