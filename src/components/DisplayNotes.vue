@@ -8,7 +8,7 @@
       <md-card>
         <div 
           class="card-items" 
-          @click="updateNotes(note)">
+          @click="updateBoxData(note)">
 
           <label 
             class="content-part"
@@ -26,6 +26,11 @@
         </div>
       </md-card>
     </div>
+    <UpdateNote
+      v-if="showUpdateBox"
+      v-bind:showUpdateBox="showUpdateBox"
+      v-bind:noteData="noteData"
+    />
   </div>
 </template>
 
@@ -33,6 +38,7 @@
 import IconColorPalette from "./IconColorPalette";
 import IconArchive from "./IconArchive";
 import DeleteNotes from "./DeleteNotes";
+import UpdateNote from "./UpdateNote";
 import { eventBus } from "../main";
 
 export default {
@@ -41,7 +47,7 @@ export default {
   data() {
     return {
       cardId: [],
-      updateNotesShow: false,
+      showUpdateBox: false,
       noteData: {},
     };
   },
@@ -49,17 +55,18 @@ export default {
     IconColorPalette,
     IconArchive,
     DeleteNotes,
+    UpdateNote,
   },
 
   methods: {
-    updateNotes: function (note) {
-      this.updateNotesShow = true;
+    updateBoxData: function (note) {
+      this.showUpdateBox = true;
       this.noteData = note;
     },
   },
   created() {
     eventBus.$on("closeDialogBox", (data) => {
-      this.updateNotesShow = data;
+      this.showUpdateBox = data;
     });
   },
 };
@@ -91,11 +98,11 @@ export default {
 }
 
 .content-part {
+  max-width: 90%;
   font-weight: bold;
   font-size: 18px;
-  max-width: 90%;
-  opacity: 0.6;
   cursor: text;
+  opacity: 0.6;
   margin: 0px 0px 10px 0px;
 }
 

@@ -80,13 +80,13 @@ export default {
 
 <style scoped>
 #create-note-container {
-  width: 95%;
+  width: 100%;
 }
 #note-mainpart {
   align-items: flex-start;
   justify-content: center;
   border-radius: 7px;
-  width: 40%;
+  width: 46%;
   margin-top: 5%;
   margin-left: 35%;
   box-shadow: 2px 3px 5px #a19f9f;

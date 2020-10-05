@@ -189,4 +189,5 @@ export default {
 img {
   width: 13%;
 }
+
 </style>

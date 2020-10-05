@@ -42,7 +42,7 @@ export default {
     eventBus.$on("getAfterUpdatedNoteList", () => {
       this.noteList = [];
       this.fetchNotes();
-    });
+    }); 
     eventBus.$emit("sendIdList",this.noteList.id)
   },
 };
