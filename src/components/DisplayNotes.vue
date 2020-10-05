@@ -1,14 +1,25 @@
 <template>
   <div class="display-notes">
-    <div class="note-cards" v-for="note in noteList" v-bind:key="note.id">
+    <div 
+      class="note-cards" 
+      v-for="note in noteList" 
+      v-bind:key="note.id">
+
       <md-card>
-        <div class="card-items" @click="updateBoxData(note)">
-          <label class="content">{{ note.title }}</label
-          ><br />
-          <label class="description content">{{ note.description }}</label
-          ><br />
+        <div 
+          class="card-items" 
+          @click="updateNotes(note)">
+
+          <label 
+            class="content-part"
+            >{{ note.title }}</label><br />
+
+          <label 
+            class="description-part"
+            >{{ note.description }}</label><br />
+
         </div>
-        <div class="notebox-icons">
+        <div class="icon-notes">
           <IconColorPalette />
           <IconArchive />
           <DeleteNotes v-bind:note="note.id" />
@@ -30,7 +41,7 @@ export default {
   data() {
     return {
       cardId: [],
-      showUpdateBox: false,
+      updateNotesShow: false,
       noteData: {},
     };
   },
@@ -41,45 +52,45 @@ export default {
   },
 
   methods: {
-    updateBoxData: function (note) {
-      this.showUpdateBox = true;
+    updateNotes: function (note) {
+      this.updateNotesShow = true;
       this.noteData = note;
     },
   },
   created() {
     eventBus.$on("closeDialogBox", (data) => {
-      this.showUpdateBox = data;
+      this.updateNotesShow = data;
     });
   },
 };
 </script>
+
 <style scoped>
 .display-notes {
-  display: flex;
-  margin-top: 1%;
-  margin-left: 16%;
-  flex-direction: row;
   width: 80%;
+  margin-top: 1%;
+  margin-left: 16%;  
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
 .card-items {
+  padding: 10px;
   display: flex;
   flex-direction: column;
   height: min-content;
   text-align: start;
-  padding: 10px;
 }
 
 .md-card {
+  width: 190px;
   margin: 8px;
   padding: 18px;
-  width: 190px;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
   border-radius: 5%;
 }
-.content {
+
+.content-part {
   font-weight: bold;
   font-size: 18px;
   max-width: 90%;
@@ -88,14 +99,20 @@ export default {
   margin: 0px 0px 10px 0px;
 }
 
-.description {
+.description-part {
+  font-weight: bold;
+  max-width: 90%;
+  opacity: 0.6;
+  font-size: 18px;
+  margin: 0px 0px 10px 0px;
   font-size: 16px;
   font-weight: 500;
+  cursor: text;
 }
 
-.notebox-icons {
+.icon-notes {
+  justify-content: space-evenly;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
 }
 </style>

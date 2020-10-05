@@ -36,29 +36,49 @@
         md-persistent="mini"
       >
         <md-list>
-          <md-list-item @click="goTo('Notes')" id="Notes">
+          <md-list-item 
+            @click="goTo('Notes')" 
+            id="Notes">
             <md-icon>emoji_objects</md-icon>
-            <span class="md-list-item-text">Notes</span>
+            <span 
+            class="md-list-item-text">
+            Notes</span>
           </md-list-item>
 
-          <md-list-item @click="goTo('Reminders')" id="Reminders">
+          <md-list-item 
+            @click="goTo('Reminders')" 
+            id="Reminders">
             <md-icon>notifications</md-icon>
-            <span class="md-list-item-text">Reminders</span>
+            <span 
+            class="md-list-item-text">
+            Reminders</span>
           </md-list-item>
 
-          <md-list-item @click="goTo('Labels')" id="Labels">
+          <md-list-item 
+            @click="goTo('Labels')" 
+            id="Labels">
             <md-icon>edit</md-icon>
-            <span class="md-list-item-text">Edit Labels</span>
+            <span 
+            class="md-list-item-text">
+            Edit Labels</span>
           </md-list-item>
 
-          <md-list-item @click="goTo('Archive')" id="Archive">
+          <md-list-item 
+            @click="goTo('Archive')" 
+            id="Archive">
             <md-icon>archive</md-icon>
-            <span class="md-list-item-text">Archive</span>
+            <span 
+            class="md-list-item-text">
+            Archive</span>
           </md-list-item>
 
-          <md-list-item @click="goTo('Trash')" id="Trash">
+          <md-list-item 
+            @click="goTo('Trash')" 
+            id="Trash">
             <md-icon>delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
+            <span 
+            class="md-list-item-text">
+            Trash</span>
           </md-list-item>
         </md-list>
       </md-drawer>
@@ -120,6 +140,13 @@ export default {
   align-items: center;
 }
 
+.component {
+  width: 85%;
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+}
+
 .md-list-item:hover {
   cursor: pointer;
   background-color: whitesmoke;
@@ -160,13 +187,6 @@ export default {
 }
 
 img {
-  width: 12%;
-}
-
-.component {
-  width: 85%;
-  display: flex;
-  height: 90vh;
-  flex-direction: column;
+  width: 13%;
 }
 </style>

@@ -63,7 +63,7 @@ export default {
         this.description = "";
       });
       this.isVisible = false;
-      eventBus.$emit("getUpdatedNoteList");
+      eventBus.$emit("getAfterUpdatedNoteList");
     },
 
     display : function () {

@@ -8,8 +8,14 @@ export default [
     { 
         path: '/home', component: FundooHome,
         children:[
-            {path: 'note',component:Note},
-            {path: 'trash',component:Trash}
+            {
+                path: 'note',
+                component:Note
+            },
+            {
+                path: 'trash',
+                component:Trash
+            }
         ]
     }
 ]

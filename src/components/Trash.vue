@@ -11,6 +11,7 @@
 <script>
 import NoteService from "../services/NoteService";
 import DisplayNotes from "./DisplayNotes";
+import { eventBus } from "../main";
 
 export default {
   name: "Trash",
@@ -30,8 +31,13 @@ export default {
       });
     },
   },
+  
   created() {
     this.fetchTrashList();
+    eventBus.$on("getDeletedInTrashList", () => {
+      this.trashList = [];
+      this.fetchTrashList();
+    });
   },
 };
 </script>

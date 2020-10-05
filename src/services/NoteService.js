@@ -10,12 +10,16 @@ class NoteService {
         return httpservice.get('notes/getNotesList')
     }
 
-    moveToTrash(trashData){
+    DeletedNoteMoveToTrash(trashData){
         return httpservice.post('notes/trashNotes',trashData)
     }
     
     fetchTrashNotesList(){
         return httpservice.get('notes/getTrashNotesList')
+    }
+    
+    deleteForever(noteId){
+        return httpservice.post('notes/deleteForeverNotes',noteId)
     }
 }
 

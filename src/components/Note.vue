@@ -4,6 +4,7 @@
     <DisplayNote v-bind:noteList="noteList" />
   </div>
 </template>
+
 <script>
 import CreateNote from "./CreateNote";
 import DisplayNote from "./DisplayNotes";
@@ -38,7 +39,7 @@ export default {
   },
   created() {
     this.fetchNotes();
-    eventBus.$on("getUpdatedNoteList", () => {
+    eventBus.$on("getAfterUpdatedNoteList", () => {
       this.noteList = [];
       this.fetchNotes();
     });
@@ -46,5 +47,6 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 </style>
