@@ -146,4 +146,18 @@ span {
   flex-direction: row;
 }
 
+@media screen and (max-width: 480px) {
+
+  #create-note-container {
+    width: 100%;
+    margin-left: -2%;
+  }
+
+  #note-mainpart {
+    min-width: 78%;
+    padding: 20px;
+    margin-left: 22%;
+  }
+}
+
 </style>

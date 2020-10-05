@@ -190,4 +190,33 @@ img {
   width: 13%;
 }
 
+@media screen and (max-width: 1025px){
+  .navbar-items{
+    min-height: 95vh;
+  }
+
+  .md-menu-content{
+  width:80%;
+  left: 88px;
+}
+}
+
+@media screen and (max-width: 480px) {
+  #title{
+  display: none;
+}
+
+img {
+  width: 50%;
+}
+
+.component{
+  margin-left: 20px;
+}
+
+.md-drawer{
+  width: 20%;
+}
+}
+
 </style>
