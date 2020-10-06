@@ -92,7 +92,7 @@ export default {
   border-radius: 7px;
   width: 46%;
   margin-top: 5%;
-  margin-left: 35%;
+  margin-left: 33%;
   box-shadow: 2px 3px 5px #a19f9f;
   padding: 10px;
   font-weight: 600;
@@ -119,6 +119,7 @@ export default {
 }
 
 .notecard {
+
   display: none;
 }
 
@@ -161,7 +162,7 @@ button {
   word-break: normal;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1024px) {
 
   #create-note-container {
     width: 100%;
@@ -171,7 +172,48 @@ button {
   #note-mainpart {
     min-width: 78%;
     padding: 20px;
-    margin-left: 22%;
+    margin-left: 20%;
+  }
+
+  button {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  #create-note-container {
+    width: 100%;
+    margin-left: -2%;
+  }
+
+  #note-mainpart {
+    min-width: 86%;
+    padding: 20px;
+    margin-left: 20%;
+  }
+
+  button {
+    width: 60%;
+  }
+}
+
+@media screen and (width: 320px) {
+
+  #create-note-container {
+    width: 100%;
+    margin-left: -2%;
+  }
+
+  #note-mainpart {
+    min-width: 90%;
+    padding: 20px;
+    margin-left: 21%;
+  }
+
+  button {
+    width: 60%;
+    font-size: 14px;
   }
 }
 
