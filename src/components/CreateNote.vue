@@ -28,6 +28,13 @@
             </span>
             <button @click="addNote()">Close</button>
           </div>
+          <md-snackbar 
+            md-position="center" 
+            :md-duration="isInfinity ? Infinity : duration" 
+            :md-active.sync="showSnackbar" 
+            md-persistent>
+            <span>{{responseData}}</span>
+          </md-snackbar>
         </md-card>
       </div>
     </div>
@@ -46,6 +53,7 @@ export default {
       isVisible: false,
       title: "",
       description: "",
+      showSnackbar:false,      
     };
   },
   components: {
@@ -60,7 +68,9 @@ export default {
         description: this.description,
       };
       NoteService.getAddNote(note).then((response) => {
-        this.responseData = response.data;
+        this.showSnackbar=true
+        this.responseData = response.data;        
+        this.responseData = "Add Note Successful";        
         this.title = "";
         this.description = "";
       });
@@ -118,10 +128,6 @@ export default {
   margin-top: -4%;
 }
 
-/* .notecard {
-  display: none;
-} */
-
 #notebox {
   width: 100%;
 }
@@ -157,7 +163,6 @@ span {
 }
 
 @media screen and (max-width: 1024px) {
-
   #create-note-container {
     width: 100%;
     margin-left: -2%;
@@ -177,7 +182,6 @@ span {
 }
 
 @media screen and (max-width: 480px) {
-
   #create-note-container {
     width: 100%;
     margin-left: -2%;
@@ -197,11 +201,9 @@ span {
   #note-card {
     width: 200px;
   }
-
 }
 
 @media screen and (width: 320px) {
-
   #create-note-container {
     width: 100%;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="delete-Notes" @click="DeletedNotesInTrash()">
+  <div class="delete-Notes" @click="DeletedNotesInTrash()">  
     <md-icon>delete</md-icon>
   </div>
 </template>

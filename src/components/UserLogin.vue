@@ -36,7 +36,11 @@
       </div>
       <md-button class="md-raised md-primary" @click="getLogin">Log In</md-button>
     </div>
-      <md-snackbar md-position="left" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackbar" md-persistent>
+      <md-snackbar 
+        md-position="center" 
+        :md-duration="isInfinity ? Infinity : duration" 
+        :md-active.sync="showSnackbar" 
+        md-persistent>
       <span>{{result}}</span>
     </md-snackbar>
     <router-view></router-view>
