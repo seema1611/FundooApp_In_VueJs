@@ -36,7 +36,9 @@
       </div>
       <md-button class="md-raised md-primary" @click="getLogin">Log In</md-button>
     </div>
-
+      <md-snackbar md-position="left" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackbar" md-persistent>
+      <span>{{result}}</span>
+    </md-snackbar>
     <router-view></router-view>
   </div>
 </template>
@@ -54,7 +56,8 @@ export default {
       password: "",
       result: "",
       hasEmailError: false,
-      hasPasswordError:false
+      hasPasswordError:false,
+      showSnackbar:false
     };
   },
   methods: {
@@ -73,8 +76,10 @@ export default {
         email: this.email,
         password: this.password,
       };
+
       userService.getUserLogin(loginDetails).then((response) => {
-        this.result = response.data;
+        this.showSnackbar=true
+        this.result = "Login Successful";
         localStorage.setItem("token", response.data.id);
         setTimeout(() => this.$router.push("home/note"), 3000);
       }),

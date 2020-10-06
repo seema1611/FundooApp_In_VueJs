@@ -4,14 +4,14 @@
 
       <div @click="display()">
         <md-card :class="{header : isVisible}"> 
-          <button>Take a note...</button>
+          <label class="title-first">Take a note....</label>
           </md-card>
       </div> 
 
       <div id="notebox">
         <md-card id = "note-card" :class="{header : !isVisible}"> 
           <md-field md-inline>
-            <label>Title</label>
+            <label class="title">Title</label>
             <md-input v-model="title"></md-input></md-field><br/>
 
           <md-field md-inline>
@@ -102,26 +102,25 @@ export default {
 
 .header {
   display: none  !important;
-  opacity: 0s.1;
+  opacity: 0.1;
 }
 
 .md-card {
   padding: 4px;
   display: flex;
   flex-direction: column;
-  box-shadow: none;
-  
+  box-shadow: none; 
 }
 
 .md-field {
   font-size: 16px;
   font-weight: 600;
+  margin-top: -4%;
 }
 
-.notecard {
-
+/* .notecard {
   display: none;
-}
+} */
 
 #notebox {
   width: 100%;
@@ -131,6 +130,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: -5%;
 }
 
 .notebox-icons > button {
@@ -151,14 +151,9 @@ span {
   flex-direction: row;
 }
 
-button {
+.title-first {
   opacity: 0.5;
-  border: none;
-  background-color: white ;
-  width: 30%;
-  font-size: 18px;
-  font-weight: bold;
-  word-break: normal;
+  margin-right: 374px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -174,9 +169,11 @@ button {
     margin-left: 20%;
   }
 
-  button {
-    width: 30%;
+  .title-first {
+    margin-right: 200px;
+    font-size: 10px;
   }
+
 }
 
 @media screen and (max-width: 480px) {
@@ -192,16 +189,21 @@ button {
     margin-left: 20%;
   }
 
-  button {
-    width: 60%;
+  .title-first {
+    margin-right: 150px;
+    font-size: 15px;
   }
+
+  #note-card {
+    width: 200px;
+  }
+
 }
 
 @media screen and (width: 320px) {
 
   #create-note-container {
     width: 100%;
-    margin-left: -2%;
   }
 
   #note-mainpart {
@@ -210,10 +212,12 @@ button {
     margin-left: 21%;
   }
 
-  button {
-    width: 60%;
-    font-size: 14px;
+  .title-first {
+    margin-right: 80px;
+    font-size: 15px;
+    height: 2%;
   }
+
 }
 
 </style>

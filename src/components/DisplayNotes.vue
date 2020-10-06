@@ -135,4 +135,30 @@ export default {
   margin-top: -10%;
 }
 
+@media screen and (max-width: 1024px) {
+
+  .md-card {
+    margin: 10px;
+    width: 230px;
+  }
+
+}
+
+@media screen and (max-width: 480-px) {
+
+  .md-card {
+    margin: 10px;
+    width: 230px;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+
+  .md-card {
+    margin: 10px;
+    width: 230px;
+  }
+
+}
 </style>
