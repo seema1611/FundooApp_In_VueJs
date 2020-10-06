@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     fetchNotes: function () {
-      NoteService.fetchNotesList().then((response) => {
+      NoteService.fetchNotesList().then((response) => {    
         response.data.data.data.forEach((element) => {
           if (element.isDeleted == false) {
             this.noteList.push(element);
@@ -32,14 +32,14 @@ export default {
       });
     },
     fetchTrashList: function () {
-      NoteService.fetchTrashNotesList().then((response) => {
+      NoteService.fetchTrashNotesList().then((response) => {      
         this.noteList = response.data.data.data;
       });
     },
   },
   created() {
     this.fetchNotes();
-    eventBus.$on("getAfterUpdatedNoteList", () => {
+    eventBus.$on("getAfterUpdatedNoteList", () => { 
       this.noteList = [];
       this.fetchNotes();
     }); 

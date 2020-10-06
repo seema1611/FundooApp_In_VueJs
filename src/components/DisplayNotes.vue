@@ -21,12 +21,11 @@
         </div>
         <div v-if="iconCategory == 'trash'" class="notebox-icons">
           <DeletePermanent v-bind:noteId="note.id" />
-        </div>        
-
+        </div>              
         <div v-else class="icon-notes">
           <IconColorPalette />
           <IconArchive />
-          <DeleteNotes v-bind:note="note.id" />
+          <DeleteNotes v-bind:note="note.id" /> 
         </div>
       </md-card>
     </div>
@@ -35,7 +34,15 @@
       v-bind:showUpdateBox="showUpdateBox"
       v-bind:noteData="noteData"
     />
+      <md-snackbar 
+        md-position="left" 
+        :md-duration="isInfinity ? Infinity : duration" 
+        :md-active.sync="showSnackbar" 
+        md-persistent>
+      <span>{{result}}</span>
+    </md-snackbar> 
   </div>
+  
 </template>
 
 <script>
@@ -54,6 +61,7 @@ export default {
       cardId: [],
       showUpdateBox: false,
       noteData: {},
+      showSnackbar:false,
     };
   },
   components: {
@@ -71,8 +79,10 @@ export default {
     },
   },
   created() {
-    eventBus.$on("closeDialogBox", (data) => {
+    eventBus.$on("closeDialogBox", (data) => { 
       this.showUpdateBox = data;
+      this.showSnackbar = true;
+      this.result = "Update Note Successfully"    
     });
   },
 };
@@ -136,7 +146,6 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-
   .md-card {
     margin: 10px;
     width: 230px;
@@ -145,7 +154,6 @@ export default {
 }
 
 @media screen and (max-width: 480-px) {
-
   .md-card {
     margin: 10px;
     width: 230px;
@@ -154,7 +162,6 @@ export default {
 }
 
 @media screen and (max-width: 320px) {
-
   .md-card {
     margin: 10px;
     width: 230px;

@@ -20,8 +20,8 @@
             <IconColorPalette />
             <IconArchive />
           </span>
-          <button @click="closeDialogBox">Close</button>
-        </div>
+          <button @click="closeDialogBox">Close</button>         
+        </div>               
       </md-card>
     </md-dialog>
   </div>
@@ -50,10 +50,10 @@ export default {
         title: this.title,
         description: this.description,
       };
-      NoteService.updateNotes(updateData).then(() => {
-        this.showUpdateBox = false;
+      NoteService.updateNotes(updateData).then(() => {      
+        this.showUpdateBox = false;         
         eventBus.$emit("closeDialogBox", this.showUpdateBox);
-        eventBus.$emit("getAfterUpdatedNoteList");
+        eventBus.$emit("getAfterUpdatedNoteList");                 
       });
     },
   },

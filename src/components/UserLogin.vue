@@ -37,7 +37,7 @@
       <md-button class="md-raised md-primary" @click="getLogin">Log In</md-button>
     </div>
       <md-snackbar 
-        md-position="center" 
+        md-position="left" 
         :md-duration="isInfinity ? Infinity : duration" 
         :md-active.sync="showSnackbar" 
         md-persistent>
@@ -61,7 +61,7 @@ export default {
       result: "",
       hasEmailError: false,
       hasPasswordError:false,
-      showSnackbar:false
+      showSnackbar:false,
     };
   },
   methods: {
@@ -83,7 +83,7 @@ export default {
 
       userService.getUserLogin(loginDetails).then((response) => {
         this.showSnackbar=true
-        this.result = "Login Successful";
+        this.result = "Login Successfully";
         localStorage.setItem("token", response.data.id);
         setTimeout(() => this.$router.push("home/note"), 3000);
       }),

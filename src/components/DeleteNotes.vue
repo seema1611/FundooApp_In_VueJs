@@ -1,5 +1,5 @@
 <template>
-  <div class="delete-Notes" @click="DeletedNotesInTrash()">  
+  <div class="delete-Notes" @click="DeletedNotesInTrash()"> 
     <md-icon>delete</md-icon>
   </div>
 </template>
@@ -11,14 +11,19 @@ import NoteService from "../services/NoteService";
 export default {
   name: "DeleteNotes",
   props:["note"],
+    data() {
+    return {
+      showSnackbar:false,
+    };
+  },
   methods: {
     DeletedNotesInTrash: function () {
       const trashData = {
         isDeleted: true,
         noteIdList: [this.note],
       };
-      NoteService.DeletedNoteMoveToTrash(trashData).then(() => {
-        eventBus.$emit("getAfterUpdatedNoteList");
+      NoteService.DeletedNoteMoveToTrash(trashData).then(() => {                
+        eventBus.$emit("getAfterUpdatedNoteList");         
       });
     },
   },

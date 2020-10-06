@@ -29,7 +29,7 @@
             <button @click="addNote()">Close</button>
           </div>
           <md-snackbar 
-            md-position="center" 
+            md-position="left" 
             :md-duration="isInfinity ? Infinity : duration" 
             :md-active.sync="showSnackbar" 
             md-persistent>
@@ -70,7 +70,7 @@ export default {
       NoteService.getAddNote(note).then((response) => {
         this.showSnackbar=true
         this.responseData = response.data;        
-        this.responseData = "Add Note Successful";        
+        this.responseData = "Note Add Successfully";        
         this.title = "";
         this.description = "";
       });
