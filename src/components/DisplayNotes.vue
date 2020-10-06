@@ -18,7 +18,7 @@
             class="description-part"
             >{{ note.description }}</label><br />
 
-        </div>
+        </div>     
         <div class="icon-notes">
           <IconColorPalette />
           <IconArchive />
@@ -79,6 +79,7 @@ export default {
   margin-left: 16%;  
   display: flex;
   flex-direction: row;
+  width: 70%;
   flex-wrap: wrap;
 }
 
@@ -88,6 +89,7 @@ export default {
   flex-direction: column;
   height: min-content;
   text-align: start;
+  padding: 10px;
 }
 
 .md-card {
@@ -98,7 +100,8 @@ export default {
 }
 
 .content-part {
-  max-width: 90%;
+  width: 90%;
+  word-break: break-word;
   font-weight: bold;
   font-size: 18px;
   cursor: text;
@@ -108,7 +111,8 @@ export default {
 
 .description-part {
   font-weight: bold;
-  max-width: 90%;
+  width: 90%;
+  word-break: break-word;
   opacity: 0.6;
   font-size: 18px;
   margin: 0px 0px 10px 0px;

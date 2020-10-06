@@ -14,15 +14,11 @@ class NoteService {
         return httpservice.post('notes/trashNotes',trashData)
     }
     
-    fetchTrashNotesList(){
+    fetchTrashNotesList() {
         return httpservice.get('notes/getTrashNotesList')
     }
-    
-    deleteForever(noteId){
-        return httpservice.post('notes/deleteForeverNotes',noteId)
-    }
 
-    updateNotes(updateData){
+    updateNotes(updateData) {
         return httpservice.post('notes/updateNotes',updateData)
     }
 }

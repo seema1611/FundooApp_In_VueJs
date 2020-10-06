@@ -6,8 +6,8 @@
         <md-card :class="{header : isVisible}"> Take a note...</md-card>
       </div> 
 
-      <div>
-        <md-card :class="{header : !isVisible}"> 
+      <div id="notebox">
+        <md-card id = "note-card" :class="{header : !isVisible}"> 
           <md-field md-inline>
             <label>Title</label>
             <md-input v-model="title"></md-input></md-field><br/>
@@ -80,6 +80,9 @@ export default {
 
 <style scoped>
 #create-note-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 #note-mainpart {
@@ -111,6 +114,7 @@ export default {
 .md-field {
   font-size: 16px;
   font-weight: 600;
+  margin: 0%;
 }
 
 .notecard {
@@ -161,3 +165,12 @@ span {
 }
 
 </style>
+
+
+
+
+
+
+
+
+

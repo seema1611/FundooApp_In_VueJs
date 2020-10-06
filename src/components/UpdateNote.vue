@@ -2,13 +2,19 @@
   <div>
     <md-dialog :md-active.sync="showUpdateBox">
       <md-card id="updateNoteCard">
-        <md-field> <md-input v-model="title"></md-input> </md-field><br />
+        <md-field> 
+          <md-input 
+            v-model="title">
+            </md-input> 
+        </md-field><br />
+
         <md-field>
           <md-textarea
             v-model="description"
             md-autogrow
           ></md-textarea> </md-field
         ><br />
+        
         <div class="notebox-icons">
           <span>
             <IconColorPalette />
