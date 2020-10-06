@@ -142,8 +142,7 @@ export default {
   background-color: transparent;
 }
 
-.md-field:after,
-.md-field:before {
+.md-field:after, .md-field:before {
   position: relative;
 }
 

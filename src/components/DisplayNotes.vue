@@ -5,7 +5,7 @@
       v-for="note in noteList" 
       v-bind:key="note.id">
 
-      <md-card>
+      <md-card md-with-hover>
         <div 
           class="card-items" 
           @click="updateBoxData(note)">
@@ -80,7 +80,7 @@ export default {
 
 <style scoped>
 .display-notes {
-  width: 80%;
+  width: 100%;
   margin-top: 1%;
   margin-left: 16%;  
   display: flex;
@@ -98,7 +98,7 @@ export default {
 }
 
 .md-card {
-  width: 190px;
+  width: 290px;
   margin: 8px;
   padding: 18px;
   border-radius: 5%;
@@ -112,6 +112,7 @@ export default {
   cursor: text;
   opacity: 0.6;
   margin: 0px 0px 10px 0px;
+  margin-bottom: -4%;
 }
 
 .description-part {
@@ -124,12 +125,14 @@ export default {
   font-size: 16px;
   font-weight: 500;
   cursor: text;
+  margin-top: -3%;
 }
 
 .icon-notes {
-  justify-content: space-evenly;
+  justify-content: start;
   display: flex;
   flex-direction: row;
+  margin-top: -10%;
 }
 
 </style>
