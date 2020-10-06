@@ -18,8 +18,12 @@
             class="description-part"
             >{{ note.description }}</label><br />
 
-        </div>     
-        <div class="icon-notes">
+        </div>
+        <div v-if="iconCategory == 'trash'" class="notebox-icons">
+          <DeletePermanent v-bind:noteId="note.id" />
+        </div>        
+
+        <div v-else class="icon-notes">
           <IconColorPalette />
           <IconArchive />
           <DeleteNotes v-bind:note="note.id" />
@@ -39,6 +43,7 @@ import IconColorPalette from "./IconColorPalette";
 import IconArchive from "./IconArchive";
 import DeleteNotes from "./DeleteNotes";
 import UpdateNote from "./UpdateNote";
+import DeletePermanent from "./DeletePermanent";
 import { eventBus } from "../main";
 
 export default {
@@ -56,6 +61,7 @@ export default {
     IconArchive,
     DeleteNotes,
     UpdateNote,
+    DeletePermanent,
   },
 
   methods: {
@@ -79,7 +85,6 @@ export default {
   margin-left: 16%;  
   display: flex;
   flex-direction: row;
-  width: 70%;
   flex-wrap: wrap;
 }
 

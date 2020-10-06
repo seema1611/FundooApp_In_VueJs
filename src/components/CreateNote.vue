@@ -3,7 +3,9 @@
     <div id="note-mainpart">
 
       <div @click="display()">
-        <md-card :class="{header : isVisible}"> Take a note...</md-card>
+        <md-card :class="{header : isVisible}"> 
+          <button>Take a note...</button>
+          </md-card>
       </div> 
 
       <div id="notebox">
@@ -80,11 +82,10 @@ export default {
 
 <style scoped>
 #create-note-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
+  margin-right: 50%;
 }
+
 #note-mainpart {
   align-items: flex-start;
   justify-content: center;
@@ -101,7 +102,7 @@ export default {
 
 .header {
   display: none  !important;
-  opacity: 0.1;
+  opacity: 0s.1;
 }
 
 .md-card {
@@ -109,12 +110,12 @@ export default {
   display: flex;
   flex-direction: column;
   box-shadow: none;
+  
 }
 
 .md-field {
   font-size: 16px;
   font-weight: 600;
-  margin: 0%;
 }
 
 .notecard {
@@ -148,6 +149,16 @@ export default {
 span {
   display: flex;
   flex-direction: row;
+}
+
+button {
+  opacity: 0.5;
+  border: none;
+  background-color: white ;
+  width: 30%;
+  font-size: 18px;
+  font-weight: bold;
+  word-break: normal;
 }
 
 @media screen and (max-width: 480px) {

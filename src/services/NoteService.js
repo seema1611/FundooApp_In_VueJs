@@ -21,6 +21,10 @@ class NoteService {
     updateNotes(updateData) {
         return httpservice.post('notes/updateNotes',updateData)
     }
+
+    deletePermanent(noteId){
+        return httpservice.post('notes/deleteForeverNotes',noteId)
+    }
 }
 
 export default new NoteService
