@@ -79,7 +79,7 @@ export default {
         this.title = "";
         this.description = "";
       });
-      this.cardColor = "#FFFFFF";
+      this.cardColor = "#ffffff";
       this.isVisible = false;
       eventBus.$emit("getAfterUpdatedNoteList");
     },

@@ -40,7 +40,7 @@ export default {
     return {
       title: "",
       description: "",
-      noteId: "",
+      noteId: "",       
     };
   },
   methods: {
@@ -51,7 +51,7 @@ export default {
         description: this.description,
       };
       NoteService.updateNotes(updateData).then(() => {      
-        this.showUpdateBox = false;         
+        this.showUpdateBox = false;       
         eventBus.$emit("closeDialogBox", this.showUpdateBox);
         eventBus.$emit("getAfterUpdatedNoteList");                 
       });
@@ -82,6 +82,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  z-index: 99999;
 }
 
 .notebox-icons > button {
@@ -91,6 +92,7 @@ export default {
   border: none;
   cursor: pointer;
   background-color: transparent;
+  z-index: 99999;
 }
 
 .md-card {

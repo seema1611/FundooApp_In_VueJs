@@ -153,11 +153,6 @@ export default {
   background-color: #ffffff;
 }
 
-#transparent :hover {
-  border: 1px solid rgb(12, 12, 12);
-}
-
-
 #red {
   background-color: #f61c08;
 }
@@ -205,13 +200,11 @@ export default {
 .color-tray .color-tray-text {
   visibility: hidden;
   width: 50px;
-  background-color: black;
-  color: #fff;
+  color: black;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
   position: sticky;
-  /* z-index: 1; */
   font-size: 12px;
   cursor: pointer;
 }
@@ -219,5 +212,4 @@ export default {
 .color-tray:hover .color-tray-text {
   visibility: visible;
 }
-
 </style>
