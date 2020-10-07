@@ -38,7 +38,6 @@
     </div>
       <md-snackbar 
         md-position="left" 
-        :md-duration="isInfinity ? Infinity : duration" 
         :md-active.sync="showSnackbar" 
         md-persistent>
       <span>{{result}}</span>

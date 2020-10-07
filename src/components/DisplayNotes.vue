@@ -5,7 +5,8 @@
       v-for="note in noteList" 
       v-bind:key="note.id">
 
-      <md-card md-with-hover>
+      <md-card md-with-hover
+        v-bind:style="{ background: note.color }">
         <div 
           class="card-items" 
           @click="updateBoxData(note)">
@@ -23,7 +24,7 @@
           <DeletePermanent v-bind:noteId="note.id" />
         </div>              
         <div v-else class="icon-notes">
-          <IconColorPalette />
+          <IconColorPalette v-bind:note="note.id" />
           <IconArchive />
           <DeleteNotes v-bind:note="note.id" /> 
         </div>
@@ -36,7 +37,6 @@
     />
       <md-snackbar 
         md-position="left" 
-        :md-duration="isInfinity ? Infinity : duration" 
         :md-active.sync="showSnackbar" 
         md-persistent>
       <span>{{result}}</span>
@@ -62,6 +62,7 @@ export default {
       showUpdateBox: false,
       noteData: {},
       showSnackbar:false,
+      result: "",
     };
   },
   components: {

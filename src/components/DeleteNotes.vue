@@ -23,7 +23,7 @@ export default {
         noteIdList: [this.note],
       };
       NoteService.DeletedNoteMoveToTrash(trashData).then(() => {                
-        eventBus.$emit("getAfterUpdatedNoteList");         
+        eventBus.$emit("getAfterUpdatedNoteList");           
       });
     },
   },

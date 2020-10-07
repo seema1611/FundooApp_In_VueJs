@@ -27,4 +27,8 @@ export default {
 .delete-part {
   cursor: pointer;
 }
+
+.md-icon {
+  margin-right: 90%;
+}
 </style>

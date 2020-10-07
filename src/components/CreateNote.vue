@@ -9,7 +9,9 @@
       </div> 
 
       <div id="notebox">
-        <md-card id = "note-card" :class="{header : !isVisible}"> 
+        <md-card id = "note-card" 
+        :class="{header : !isVisible}"
+         v-bind:style="{ background: cardColor }"> 
           <md-field md-inline>
             <label class="title">Title</label>
             <md-input v-model="title"></md-input></md-field><br/>
@@ -23,17 +25,22 @@
 
           <div class="notebox-icons">
             <span>
-              <IconColorPalette />
+              <IconColorPalette v-bind:createNote="createNote" />
+              <md-snackbar 
+                md-position="left" 
+                :md-active.sync="showSnackbar" 
+                md-persistent>
+              <span>{{result}}</span>
+            </md-snackbar>              
               <IconArchive />
             </span>
             <button @click="addNote()">Close</button>
           </div>
           <md-snackbar 
             md-position="left" 
-            :md-duration="isInfinity ? Infinity : duration" 
             :md-active.sync="showSnackbar" 
             md-persistent>
-            <span>{{responseData}}</span>
+            <span>{{result}}</span>
           </md-snackbar>
         </md-card>
       </div>
@@ -53,7 +60,10 @@ export default {
       isVisible: false,
       title: "",
       description: "",
-      showSnackbar:false,      
+      showSnackbar:false,    
+      cardColor: "",
+      createNote: true, 
+      result: "",
     };
   },
   components: {
@@ -66,14 +76,16 @@ export default {
       const note = {
         title: this.title,
         description: this.description,
+        color: this.cardColor,
       };
       NoteService.getAddNote(note).then((response) => {
         this.showSnackbar=true
         this.responseData = response.data;        
-        this.responseData = "Note Add Successfully";        
+        this.result = "Note Add Successfully";        
         this.title = "";
         this.description = "";
       });
+      this.cardColor = "#FFFFFF";
       this.isVisible = false;
       eventBus.$emit("getAfterUpdatedNoteList");
     },
@@ -86,6 +98,11 @@ export default {
     if (localStorage.getItem("token") == undefined) {
       this.$router.push("/");
     }
+    eventBus.$on("getColorUpdated", (data) => {
+      this.showSnackbar=true;
+      this.result = "Update Note Color Successfully";
+      this.cardColor = data;
+    });
   },
 };
 </script>

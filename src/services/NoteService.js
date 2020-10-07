@@ -25,6 +25,10 @@ class NoteService {
     deletePermanent(noteId){
         return httpservice.post('notes/deleteForeverNotes',noteId)
     }
+
+    changeCardColor(colorData){
+        return httpservice.post('notes/changesColorNotes',colorData)
+    }
 }
 
 export default new NoteService
