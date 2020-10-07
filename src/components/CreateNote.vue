@@ -25,13 +25,7 @@
 
           <div class="notebox-icons">
             <span>
-              <IconColorPalette v-bind:createNote="createNote" />
-              <md-snackbar 
-                md-position="left" 
-                :md-active.sync="showSnackbar" 
-                md-persistent>
-              <span>{{result}}</span>
-            </md-snackbar>              
+              <IconColorPalette v-bind:createNote="createNote" />            
               <IconArchive />
             </span>
             <button @click="addNote()">Close</button>
@@ -99,8 +93,6 @@ export default {
       this.$router.push("/");
     }
     eventBus.$on("getColorUpdated", (data) => {
-      this.showSnackbar=true;
-      this.result = "Update Note Color Successfully";
       this.cardColor = data;
     });
   },
