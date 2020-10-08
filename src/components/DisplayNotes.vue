@@ -29,7 +29,7 @@
         <div 
           v-else-if="iconCategory == 'archive'" 
           class="icon-notes">
-          <IconUnarchive />
+          <IconUnarchive v-bind:noteId="note.id"/>
         </div>         
         <div v-else class="icon-notes">
           <IconColorPalette v-bind:note="note.id" />

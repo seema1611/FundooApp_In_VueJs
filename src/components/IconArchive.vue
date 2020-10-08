@@ -9,7 +9,7 @@ import NoteService from '../services/NoteService'
 import { eventBus } from "../main";
 
 export default {
-  name: "ArchiveIcon",
+  name: "IconArchive",
   props:["note"],
   methods:{
     sendToArchive:function(){

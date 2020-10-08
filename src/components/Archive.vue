@@ -1,7 +1,7 @@
 <template>
-  <div class="display-notes">
+  <div class="archive-display">
     <DisplayNotes
-      v-bind:noteList="archiveList"
+      v-bind:noteList="filteredList"
       v-bind:iconCategory="iconCategory"
     />
   </div>
@@ -9,12 +9,14 @@
 <script>
 import DisplayNotes from "./DisplayNotes";
 import NoteService from "../services/NoteService";
+import {eventBus} from '../main'
 export default {
   name: "Archive",
   data() {
     return {
       archiveList: [],
       iconCategory: "archive",
+      searchText:'',
     };
   },
   components: {
@@ -32,16 +34,27 @@ export default {
       this.$router.push("/");
     }
     this.fetchArchiveList();
+    eventBus.$on("unarchivedNote", () => {
+      this.archiveList = [];
+      this.fetchArchiveList();
+    });
   },
+  computed:{
+    filteredList:function(){
+      return this.archiveList.filter((note)=>{
+        return note.title.match(this.searchText);
+      })
+    }
+  }
 };
 </script>
+
 <style scoped>
-.display-notes {
+.archive-display {
   display: flex;
   margin-top: 1%;
-  margin-left: 20%;
   flex-direction: row;
-  width: 65%;
+  width: 100%;
   flex-wrap: wrap;
 }
 </style>
