@@ -121,7 +121,10 @@ export default {
       }
       if (selectedOption == "Trash") {
         this.$router.push("trash");
-      }    
+      }
+      if (selectedOption == "Archive") {
+        this.$router.push("archive");
+      }     
     },
   },
 };

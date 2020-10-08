@@ -25,6 +25,11 @@
           class="notebox-icons">
           <DeletePermanent 
           v-bind:noteId="note.id" />
+        </div>    
+        <div 
+          v-else-if="iconCategory == 'archive'" 
+          class="icon-notes">
+          <IconUnarchive />
         </div>         
         <div v-else class="icon-notes">
           <IconColorPalette v-bind:note="note.id" />
@@ -55,6 +60,7 @@ import DeleteNotes from "./DeleteNotes";
 import UpdateNote from "./UpdateNote";
 import DeletePermanent from "./DeletePermanent";
 import { eventBus } from "../main";
+import IconUnarchive from './IconUnarchive';
 
 export default {
   name: "DisplayNotes",
@@ -74,6 +80,7 @@ export default {
     DeleteNotes,
     UpdateNote,
     DeletePermanent,
+    IconUnarchive,
   },
   methods: {
     updateBoxData: function (note) {
@@ -95,7 +102,7 @@ export default {
 .display-notes {
   width: 100%;
   margin-top: 1%;
-  margin-left: 12%;  
+  margin-left: 16%;  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

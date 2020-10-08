@@ -58,6 +58,7 @@ export default {
       cardColor: "",
       createNote: true, 
       result: "",
+      isArchived: false,
     };
   },
   components: {
@@ -81,6 +82,7 @@ export default {
       });
       this.cardColor = "#ffffff";
       this.isVisible = false;
+      this.isArchived = false;
       eventBus.$emit("getAfterUpdatedNoteList");
     },
     display : function () {
@@ -93,6 +95,9 @@ export default {
     }
     eventBus.$on("getColorUpdated", (data) => {
       this.cardColor = data;
+    });
+    eventBus.$on("isArchived", (data) => {
+      this.isArchived = data;
     });    
   },
 };

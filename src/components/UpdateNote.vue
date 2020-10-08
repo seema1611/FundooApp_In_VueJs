@@ -16,10 +16,9 @@
         ><br />
         
         <div class="notebox-icons">
-          <span>
-            <IconColorPalette />
-            <IconArchive />
-            <!-- <IconArchive v-bind:note="noteId" /> -->
+          <span>           
+            <IconColorPalette v-bind:note="noteId" />
+            <IconArchive v-bind:note="noteId" />
           </span>
           <button @click="closeDialogBox">Close</button>         
         </div>               

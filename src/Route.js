@@ -2,6 +2,7 @@ import UserLogin from './components/UserLogin';
 import FundooHome from './components/FundooHome';
 import Note from './components/Note';
 import Trash from './components/Trash';
+import Archive from './components/Archive';
 
 export default [
     { path: '/', component: UserLogin },
@@ -15,6 +16,10 @@ export default [
             {
                 path: 'trash',
                 component:Trash
+            },
+            { 
+                path: 'archive', 
+                component: Archive 
             },
         ]
     }
