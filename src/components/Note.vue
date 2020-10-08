@@ -1,7 +1,7 @@
 <template>
   <div>
     <CreateNote />
-    <DisplayNote v-bind:noteList="noteList" />
+    <DisplayNote v-bind:noteList="filteredList"  />
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     fetchNotes: function () {
       NoteService.fetchNotesList().then((response) => {    
         response.data.data.data.forEach((element) => {
-          if (element.isDeleted == false) {
+          if (element.isDeleted == false && element.isArchived == false) {
             this.noteList.push(element);
           }
         });
@@ -45,6 +45,15 @@ export default {
     }); 
     eventBus.$emit("sendIdList",this.noteList.id)
   },
+
+  computed:{
+    filteredList:function(){
+      return this.noteList.filter((note)=>{
+        return note.title.match(this.searchText);
+      })
+    }
+  }
+
 };
 </script>
 

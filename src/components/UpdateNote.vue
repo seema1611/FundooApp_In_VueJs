@@ -19,6 +19,7 @@
           <span>
             <IconColorPalette />
             <IconArchive />
+            <!-- <IconArchive v-bind:note="noteId" /> -->
           </span>
           <button @click="closeDialogBox">Close</button>         
         </div>               
@@ -40,9 +41,16 @@ export default {
     return {
       title: "",
       description: "",
-      noteId: "",       
+      noteId: "",  
+      color: '',     
     };
   },
+
+  components: {
+    IconColorPalette,
+    IconArchive,
+  },
+
   methods: {
     closeDialogBox: function () {
       const updateData = {
@@ -51,22 +59,25 @@ export default {
         description: this.description,
       };
       NoteService.updateNotes(updateData).then(() => {      
-        this.showUpdateBox = false;       
+        this.showUpdateBox = false; 
+        this.isArchived=false;      
         eventBus.$emit("closeDialogBox", this.showUpdateBox);
         eventBus.$emit("getAfterUpdatedNoteList");                 
       });
     },
   },
 
+  created() {
+    eventBus.$on("'getUpdated", (data) => {
+      this.color = data;
+    });
+  },
+
   mounted() {
     this.noteId = this.$props.noteData.id;
     this.title = this.$props.noteData.title;
     this.description = this.$props.noteData.description;
-  },
-
-  components: {
-    IconColorPalette,
-    IconArchive,
+    this.color = this.$props.noteData.color;
   },
 };
 </script>

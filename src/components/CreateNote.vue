@@ -65,11 +65,11 @@ export default {
     IconArchive,
   },
   methods: {
-
     addNote: function () {
       const note = {
         title: this.title,
         description: this.description,
+        isArchived: this.isArchived,
         color: this.cardColor,
       };
       NoteService.getAddNote(note).then((response) => {
@@ -83,7 +83,6 @@ export default {
       this.isVisible = false;
       eventBus.$emit("getAfterUpdatedNoteList");
     },
-
     display : function () {
       this.isVisible = true;
     }
@@ -94,7 +93,7 @@ export default {
     }
     eventBus.$on("getColorUpdated", (data) => {
       this.cardColor = data;
-    });
+    });    
   },
 };
 </script>
@@ -104,7 +103,6 @@ export default {
   width: 100%;
   margin-right: 50%;
 }
-
 #note-mainpart {
   align-items: flex-start;
   justify-content: center;
@@ -118,36 +116,30 @@ export default {
   font-size: 18px;
   cursor: text;
 }
-
 .header {
   display: none  !important;
   opacity: 0.1;
 }
-
 .md-card {
   padding: 4px;
   display: flex;
   flex-direction: column;
   box-shadow: none; 
 }
-
 .md-field {
   font-size: 16px;
   font-weight: 600;
   margin-top: -4%;
 }
-
 #notebox {
   width: 100%;
 }
-
 .notebox-icons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: -5%;
 }
-
 .notebox-icons > button {
   width: 15%;
   font-size: 15px;
@@ -156,88 +148,63 @@ export default {
   cursor: pointer;
   background-color: transparent;
 }
-
 .md-field:after, .md-field:before {
   position: relative;
 }
-
 span {
   display: flex;
   flex-direction: row;
 }
-
 .title-first {
   opacity: 0.5;
   margin-right: 374px;
 }
-
 @media screen and (max-width: 1024px) {
   #create-note-container {
     width: 100%;
     margin-left: -2%;
   }
-
   #note-mainpart {
     min-width: 78%;
     padding: 20px;
     margin-left: 20%;
   }
-
   .title-first {
     margin-right: 200px;
     font-size: 10px;
   }
-
 }
-
 @media screen and (max-width: 480px) {
   #create-note-container {
     width: 100%;
     margin-left: -2%;
   }
-
   #note-mainpart {
     min-width: 86%;
     padding: 20px;
     margin-left: 20%;
   }
-
   .title-first {
     margin-right: 150px;
     font-size: 15px;
   }
-
   #note-card {
     width: 200px;
   }
 }
-
 @media screen and (width: 320px) {
   #create-note-container {
     width: 100%;
   }
-
   #note-mainpart {
     min-width: 90%;
     padding: 20px;
     margin-left: 21%;
   }
-
   .title-first {
     margin-right: 80px;
     font-size: 15px;
     height: 2%;
   }
-
 }
-
 </style>
-
-
-
-
-
-
-
-
-

@@ -121,7 +121,7 @@ export default {
       }
       if (selectedOption == "Trash") {
         this.$router.push("trash");
-      }
+      }    
     },
   },
 };
@@ -132,91 +132,74 @@ export default {
   width: 100%;
   flex-direction: column;
 }
-
 .navbar {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
 }
-
 .component {
   width: 85%;
   display: flex;
   height: 90vh;
   flex-direction: column;
 }
-
 .md-list-item:hover {
   cursor: pointer;
   background-color: whitesmoke;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
-
 .md-toolbar.md-theme-default.md-primary {
   background-color: transparent;
   box-shadow: none;
   border-bottom: 2px solid silver;
 }
-
 .md-icon {
   color: black !important;
 }
-
 .search {
   max-width: 44%;
   display: flex;
   flex-direction: row;
   background-color: rgb(243, 240, 240) !important;
 }
-
 .md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box {
   height: 50px;
   border-radius: 7px;
 }
-
 .md-drawer.md-theme-default.md-persistent-mini.md-left {
   width: 15%;
   min-height: 90vh;
 }
-
 .md-title {
   color: grey !important;
   margin-right: 20% !important;
 }
-
 img {
   width: 13%;
 }
-
 @media screen and (max-width: 1025px){
   .navbar-items{
     min-height: 95vh;
   }
-
   .md-menu-content{
   width:80%;
   left: 88px;
 }
 }
-
 @media screen and (max-width: 480px) {
   #title{
   display: none;
 }
-
 img {
   width: 50%;
 }
-
 .component{
   margin-left: 20px;
 }
-
 .md-drawer{
   width: 20%;
 }
 }
-
 </style>

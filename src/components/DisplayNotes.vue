@@ -20,12 +20,15 @@
             >{{ note.description }}</label><br />
 
         </div>
-        <div v-if="iconCategory == 'trash'" class="notebox-icons">
-          <DeletePermanent v-bind:noteId="note.id" />
-        </div>              
+        <div 
+          v-if="iconCategory == 'trash'" 
+          class="notebox-icons">
+          <DeletePermanent 
+          v-bind:noteId="note.id" />
+        </div>         
         <div v-else class="icon-notes">
           <IconColorPalette v-bind:note="note.id" />
-          <IconArchive />
+          <IconArchive v-bind:note="note.id" />
           <DeleteNotes v-bind:note="note.id" /> 
         </div>
       </md-card>
@@ -72,7 +75,6 @@ export default {
     UpdateNote,
     DeletePermanent,
   },
-
   methods: {
     updateBoxData: function (note) {
       this.showUpdateBox = true;
@@ -93,12 +95,11 @@ export default {
 .display-notes {
   width: 100%;
   margin-top: 1%;
-  margin-left: 16%;  
+  margin-left: 12%;  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
 .card-items {
   padding: 10px;
   display: flex;
@@ -145,28 +146,22 @@ export default {
   flex-direction: row;
   margin-top: -10%;
 }
-
 @media screen and (max-width: 1024px) {
   .md-card {
     margin: 10px;
     width: 230px;
   }
-
 }
-
 @media screen and (max-width: 480-px) {
   .md-card {
     margin: 10px;
     width: 230px;
   }
-
 }
-
 @media screen and (max-width: 320px) {
   .md-card {
     margin: 10px;
     width: 230px;
   }
-
 }
 </style>

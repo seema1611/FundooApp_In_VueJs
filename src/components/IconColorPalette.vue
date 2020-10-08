@@ -131,6 +131,8 @@ export default {
   flex-wrap: wrap;
   width: 12%;
   min-height: fit-content;
+  z-index: 9999;
+  position: absolute;
 }
 
 .color-items {
@@ -147,6 +149,22 @@ export default {
   border-radius: 50%;
   margin: 2px;
   border: 1px solid rgb(231, 227, 227);
+}
+
+.color-tray .color-tray-text {
+  visibility: hidden;
+  width: 50px;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: sticky;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.color-tray:hover .color-tray-text {
+  visibility: visible;
 }
 
 #transparent {
@@ -197,19 +215,4 @@ export default {
   background-color:  #6a6d6d;
 }
 
-.color-tray .color-tray-text {
-  visibility: hidden;
-  width: 50px;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: sticky;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.color-tray:hover .color-tray-text {
-  visibility: visible;
-}
 </style>

@@ -15,7 +15,7 @@ export default [
             {
                 path: 'trash',
                 component:Trash
-            }
+            },
         ]
     }
 ]
