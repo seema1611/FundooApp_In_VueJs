@@ -1,10 +1,17 @@
 <template>
   <div class="archive-display">
     <DisplayNotes
-      v-bind:noteList="filteredList"
+      v-bind:noteList="archiveList"
       v-bind:iconCategory="iconCategory"
     />
+      <md-snackbar 
+        md-position="left" 
+        :md-active.sync="showSnackbar" 
+        md-persistent>
+      <span>{{result}}</span>
+    </md-snackbar>      
   </div>
+  
 </template>
 <script>
 import DisplayNotes from "./DisplayNotes";
@@ -16,7 +23,8 @@ export default {
     return {
       archiveList: [],
       iconCategory: "archive",
-      searchText:'',
+      showSnackbar:false, 
+      result: "",
     };
   },
   components: {
@@ -37,15 +45,10 @@ export default {
     eventBus.$on("unarchivedNote", () => {
       this.archiveList = [];
       this.fetchArchiveList();
+      this.showSnackbar=true
+      this.result = "UnArchive Note Note Successfully";        
     });
   },
-  computed:{
-    filteredList:function(){
-      return this.archiveList.filter((note)=>{
-        return note.title.match(this.searchText);
-      })
-    }
-  }
 };
 </script>
 
