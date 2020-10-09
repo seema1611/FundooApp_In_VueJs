@@ -93,7 +93,7 @@ export default {
     if (localStorage.getItem("token") == undefined) {
       this.$router.push("/");
     }
-    eventBus.$on("getColorUpdated", (data) => {
+    eventBus.$on("getUpdatedColorOnNotes", (data) => {
       this.cardColor = data;
     });
     eventBus.$on("isArchived", (data) => {

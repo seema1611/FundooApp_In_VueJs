@@ -46,7 +46,7 @@ export default {
       this.archiveList = [];
       this.fetchArchiveList();
       this.showSnackbar=true
-      this.result = "UnArchive Note Note Successfully";        
+      this.result = "UnArchive Note Successfully";    
     });
   },
 };
