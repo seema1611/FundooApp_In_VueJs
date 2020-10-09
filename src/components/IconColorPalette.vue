@@ -5,9 +5,14 @@
       
       <md-menu-content >
         <div class="color-items">
-           <div  class="color-tray" v-for="(color,index ) in colorArray" v-bind:key="index"
-            v-bind:style="{background : color.color}" @click="changeColor(color.color)">
+
+           <div  class="color-array" v-for="(color,index ) in colorArray" 
+              v-bind:key="index"
+              v-bind:style="{background : color.color}" 
+              v-bind:value="value"
+              @click="changeColor(color.color)">
            </div>
+           
         </div>
       </md-menu-content>
 
@@ -28,9 +33,12 @@ export default {
        setColor:"",
        noteId:'',
        colorArray : [
-        { color: '#ffffff' }, { color: '#f61c08' }, { color: '#f0b401' }, { color: '#ffea04' },
-        { color: '#87fc02' }, { color: '#00eef7' }, { color: '#a9eaf8' }, { color: '#3803f5' },
-        { color: '#8707f7' }, { color: '#f5a8e2' }, { color: '#cc5d31' }, { color: '#6a6d6d' },
+        { color: '#ffffff', value: 'Default' }, { color: '#f61c08', value: 'Red' }, 
+        { color: '#f0b401', value: 'Default' }, { color: '#ffea04', value: 'Default' },
+        { color: '#87fc02', value: 'Default' }, { color: '#00eef7', value: 'Default' }, 
+        { color: '#a9eaf8', value: 'Default' }, { color: '#3803f5', value: 'Default' },
+        { color: '#8707f7', value: 'Default' }, { color: '#f5a8e2', value: 'Default' },
+        { color: '#cc5d31', value: 'Default' }, { color: '#6a6d6d', value: 'Default' },
       ],
     }
   },
@@ -62,7 +70,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 12%;
+  width: 10%;
   min-height: fit-content;
   z-index: 9999;
   position: absolute;
@@ -75,10 +83,12 @@ export default {
   padding: 6px;
 }
 
-.color-tray{
-  padding: 11%;
+.color-array{
+  width: 22%;
+  height: 35px;
+  /* padding: 11%; */
   border-radius: 50%;
-  margin:1px;
-  border: 1px solid grey;
+  margin: 2px;
+  border: 1px solid rgb(204, 204, 204);
 }
 </style>

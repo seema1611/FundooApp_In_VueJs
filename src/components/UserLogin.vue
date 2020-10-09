@@ -84,6 +84,9 @@ export default {
         this.showSnackbar=true
         this.result = "Login Successfully";
         localStorage.setItem("token", response.data.id);
+        localStorage.setItem("userfirstname",response.data.firstName);
+        localStorage.setItem("userlastname",response.data.lastName);
+        localStorage.setItem("email",response.data.email);
         setTimeout(() => this.$router.push("home/note"), 3000);
       }),
         (error) => {
