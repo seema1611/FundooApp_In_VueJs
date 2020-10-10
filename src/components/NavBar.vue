@@ -26,9 +26,11 @@
 
           <div class="md-toolbar-section-end">
             <md-menu md-size="medium" md-align-trigger>
+
               <md-button class="md-icon-button" md-menu-trigger>
                 <img class ="img-usericon" v-bind:src="require('../assets/usericon.png')" />
               </md-button>
+              
               <md-menu-content>
                 <div class="profile">
                   <md-button class="md-icon-button">

@@ -90,9 +90,6 @@ export default {
     }
   },
   created() {
-    if (localStorage.getItem("token") == undefined) {
-      this.$router.push("/");
-    }
     eventBus.$on("getUpdatedColorOnNotes", (data) => {
       this.cardColor = data;
     });

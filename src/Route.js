@@ -6,20 +6,47 @@ import Archive from './components/Archive';
 
 export default [
     { path: '/', component: UserLogin },
-    { 
+    {
         path: '/home', component: FundooHome,
-        children:[
+        children: [
             {
                 path: 'note',
-                component:Note
+                component: Note,
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("token") == undefined) {
+                        next({
+                            path: '/'
+                        })
+                    } else {
+                        next()
+                    }
+                }
             },
             {
                 path: 'trash',
-                component:Trash
+                component: Trash,
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("token") == undefined) {
+                        next({
+                            path: '/'
+                        })
+                    } else {
+                        next()
+                    }
+                }
             },
-            { 
+            {
                 path: 'archive', 
-                component: Archive 
+                component: Archive,
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("token") == undefined) {
+                        next({
+                            path: '/'
+                        })
+                    } else {
+                        next()
+                    }
+                }
             },
         ]
     }

@@ -39,10 +39,7 @@ export default {
       });
     },
   },
-  created() {
-    if (localStorage.getItem("token") == undefined) {
-      this.$router.push("/");
-    }    
+  created() {    
     this.fetchTrashList();
     eventBus.$on("getDeletedInTrashList", () => {          
       this.trashList = [];
