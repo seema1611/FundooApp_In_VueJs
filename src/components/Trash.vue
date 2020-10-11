@@ -2,7 +2,7 @@
   <div class="trash-container">
     <div class="trash-part">
       <DisplayNotes
-        v-bind:noteList="trashList"
+        v-bind:noteList="filteredList"
         v-bind:iconCategory="iconCategory"
       />
     </div>
@@ -26,7 +26,8 @@ export default {
       trashList: [],
       iconCategory: "trash",
       showSnackbar:false, 
-      result: "",     
+      result: "",
+      searchText:'',         
     };
   },
   components: {
@@ -47,7 +48,18 @@ export default {
       this.showSnackbar=true
       this.result = "Permanently Delete Note Successfully";       
     });
+
+    eventBus.$on("searchCard", (data) => {
+      this.searchText=data;
+    });
   },
+  computed:{
+    filteredList:function(){
+      return this.trashList.filter((note)=>{
+        return note.title.match(this.searchText);
+      })
+    }
+  }
 };
 </script>
 

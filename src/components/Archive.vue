@@ -1,7 +1,7 @@
 <template>
   <div class="archive-display">
     <DisplayNotes
-      v-bind:noteList="archiveList"
+      v-bind:noteList="filteredList"
       v-bind:iconCategory="iconCategory"
     />
       <md-snackbar 
@@ -17,10 +17,12 @@
 import DisplayNotes from "./DisplayNotes";
 import NoteService from "../services/NoteService";
 import {eventBus} from '../main'
+
 export default {
   name: "Archive",
   data() {
     return {
+      searchText:'',
       archiveList: [],
       iconCategory: "archive",
       showSnackbar:false, 
@@ -45,7 +47,17 @@ export default {
       this.showSnackbar=true
       this.result = "UnArchive Note Successfully";    
     });
+    eventBus.$on("searchCard", (data) => {
+      this.searchText=data;
+    });
   },
+  computed:{
+    filteredList:function(){
+      return this.archiveList.filter((note)=>{
+        return note.title.match(this.searchText);
+      })
+    }
+  }
 };
 </script>
 

@@ -15,6 +15,8 @@ export default {
   data() {
     return {
       noteList: [],
+      visibility:false,
+      searchText:''      
     };
   },
   components: {
@@ -31,14 +33,19 @@ export default {
         });
       });
     },
+    
     fetchTrashList: function () {
       NoteService.fetchTrashNotesList().then((response) => {      
         this.noteList = response.data.data.data;
       });
     },
   },
+
   created() {
     this.fetchNotes();
+     eventBus.$on("searchCard", (data) => {
+      this.searchText=data;
+    })
     eventBus.$on("getAfterUpdatedNoteList", () => { 
       this.noteList = [];
       this.fetchNotes();
@@ -56,6 +63,3 @@ export default {
 
 };
 </script>
-
-<style scoped>
-</style>

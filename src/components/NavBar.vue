@@ -15,13 +15,16 @@
               <span id="title"> Fundoo </span>
             </span>
           </div>
+                
           <md-autocomplete
             class="search"
             v-model="searchText"
             :md-options="options"
             md-layout="box"
           >
-            <label>Search...</label>
+            <label>
+                Search...
+            </label>
           </md-autocomplete>
 
           <div class="md-toolbar-section-end">
@@ -94,6 +97,8 @@
 </template>
 
 <script>
+import {eventBus} from '../main'
+
 export default {
   name: "NavBar",
   data() {
@@ -120,7 +125,7 @@ export default {
       if (this.selected.length != 0) {
         document.getElementById(this.selected).setAttribute("style", "");
       }
-      styleproperty.backgroundColor = "#888785";
+      styleproperty.backgroundColor = "rgb(255, 221, 177)";
       styleproperty.borderTopRightRadius = "20px";
       styleproperty.borderBottomRightRadius = "20px";
       this.selected = selectedOption;
@@ -147,6 +152,13 @@ export default {
     this.lastName = localStorage.getItem("userlastname");
     this.email = localStorage.getItem("email");
   },
+
+  watch: {
+    searchText: function () {
+      eventBus.$emit("searchCard", this.searchText);
+    },
+  },
+    
 };
 </script>
 <style scoped>
@@ -163,12 +175,11 @@ export default {
   align-items: center;
 }
 
-
 .md-list-item:hover {
   cursor: pointer;
-  background-color: whitesmoke;
+  background-color: rgb(255, 221, 177);
   border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+   border-bottom-right-radius: 20px;
 }
 
 .md-toolbar.md-theme-default.md-primary {
@@ -185,7 +196,9 @@ export default {
   max-width: 44%;
   display: flex;
   flex-direction: row;
-  background-color: rgb(243, 240, 240) !important;
+  background-color: rgb(238, 238, 238) !important;
+  color :rgb(2, 0, 0);
+  margin-right: 5%;
 }
 
 .md-toolbar 
@@ -203,7 +216,7 @@ export default {
 }
 
 img {
-  width: 10%;
+  width: 14%;
 }
 
 .component {
