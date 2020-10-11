@@ -15,7 +15,10 @@
               <span id="title"> Fundoo </span>
             </span>
           </div>
-                
+          
+          <div class="search-icon">
+            <img class ="img-searchicon" v-bind:src="require('../assets/search.png')" /> 
+          </div>         
           <md-autocomplete
             class="search"
             v-model="searchText"
@@ -196,9 +199,27 @@ export default {
   max-width: 44%;
   display: flex;
   flex-direction: row;
-  background-color: rgb(238, 238, 238) !important;
+  background-color:whitesmoke !important;
   color :rgb(2, 0, 0);
   margin-right: 5%;
+}
+
+.search-icon {
+  background-color:whitesmoke;
+  width: 40px;
+  height: 40px;
+}
+
+.img-searchicon {
+  margin-top: 30%;
+  width: 20px;
+  height: 20px;
+}
+
+.search-icon :hover{
+  background-color: rgb(212, 207, 207);
+  border-radius: 50%;
+  border: 80px, 80px, 80px, 80px;
 }
 
 .md-toolbar 
