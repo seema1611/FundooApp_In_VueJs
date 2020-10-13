@@ -1,5 +1,6 @@
 <template>
   <div class="archive-display">
+    <md-progress-spinner :class="{visible:!visible}" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
     <DisplayNotes
       v-bind:noteList="filteredList"
       v-bind:iconCategory="iconCategory"
@@ -27,6 +28,7 @@ export default {
       iconCategory: "archive",
       showSnackbar:false, 
       result: "",
+      visible: false,
     };
   },
   components: {
@@ -34,8 +36,14 @@ export default {
   },
   methods: {
     fetchArchiveList: function () {
-      NoteService.fetchArchiveNotes().then((response) => {
+      this.visible = true;
+      NoteService.fetchArchiveNotes()
+      .then((response) => {
         this.archiveList = response.data.data.data;
+        this.visible = false;
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },
@@ -52,7 +60,7 @@ export default {
     });
   },
   computed:{
-    filteredList:function(){
+    filteredList:function () {
       return this.archiveList.filter((note)=>{
         return note.title.match(this.searchText);
       })
@@ -68,5 +76,14 @@ export default {
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
+}
+
+.md-progress-spinner {
+  margin-top: 15%;
+  margin-left: 50%;
+}
+
+.visible {
+  display: none;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <CreateNote />
-    <md-progress-spinner :class="{visible:!visible}" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
+    <md-progress-spinner :class="{visible:!visible}" :md-stroke="2" md-mode="indeterminate"></md-progress-spinner>
     <DisplayNote v-bind:noteList="filteredList"  />
   </div>
 </template>
@@ -71,6 +71,7 @@ export default {
 <style scoped>
 .md-progress-spinner {
   margin-top: 15%;
+  margin-left: 15%;
 }
 
 .visible {
