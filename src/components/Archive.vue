@@ -47,7 +47,7 @@ export default {
       this.showSnackbar=true
       this.result = "UnArchive Note Successfully";    
     });
-    eventBus.$on("searchCard", (data) => {
+    eventBus.$on("searchNotesWithTitle", (data) => {
       this.searchText=data;
     });
   },

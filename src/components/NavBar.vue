@@ -158,7 +158,7 @@ export default {
 
   watch: {
     searchText: function () {
-      eventBus.$emit("searchCard", this.searchText);
+      eventBus.$emit("searchNotesWithTitle", this.searchText);
     },
   },
     

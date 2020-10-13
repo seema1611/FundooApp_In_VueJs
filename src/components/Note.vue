@@ -1,6 +1,7 @@
 <template>
   <div>
     <CreateNote />
+    <md-progress-spinner :class="{visible:!visible}" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
     <DisplayNote v-bind:noteList="filteredList"  />
   </div>
 </template>
@@ -15,8 +16,8 @@ export default {
   data() {
     return {
       noteList: [],
-      visibility:false,
-      searchText:''      
+      searchText:'',
+      visible: false,      
     };
   },
   components: {
@@ -25,8 +26,11 @@ export default {
   },
   methods: {
     fetchNotes: function () {
-      NoteService.fetchNotesList().then((response) => {    
+      this.visible = true;
+      NoteService.fetchNotesList().
+      then((response) => {    
         response.data.data.data.forEach((element) => {
+          this.visible = false;
           if (element.isDeleted == false && element.isArchived == false) {
             this.noteList.push(element);
           }
@@ -63,3 +67,14 @@ export default {
 
 };
 </script>
+
+<style scoped>
+.md-progress-spinner {
+  margin-top: 15%;
+}
+
+.visible {
+  display: none;
+}
+
+</style>

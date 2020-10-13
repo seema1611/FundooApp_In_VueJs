@@ -8,8 +8,13 @@
 
            <div  class="color-array" v-for="(color,index ) in colorArray" 
               v-bind:key="index"
-              v-bind:style="{background : color.color}" 
+              v-bind:style="{background : color.color}"
               @click="changeColor(color.color)">
+
+                <!-- <md-tooltip @click="colorName()"
+                  md-direction="bottom">
+                   <span> {{nameOfColor}} </span>
+                </md-tooltip>            -->
            </div>
            
         </div>
@@ -31,19 +36,31 @@ export default {
        noteIdList: [],
        setColor:"",
        noteId:'',
+       showTooltip: false,
+       nameOfColor: "",
        colorArray : [
-        { color: '#ffffff' }, { color: '#f61c08' }, 
-        { color: '#f0b401' }, { color: '#ffea04' },
-        { color: '#87fc02' }, { color: '#00eef7' }, 
-        { color: '#a9eaf8' }, { color: '#3803f5' },
-        { color: '#8707f7' } ,{ color: '#f5a8e2' },
-        { color: '#cc5d31' }, { color: '#6a6d6d' },
+        { color: '#ffffff'}, { color: '#f61c08'}, 
+        { color: '#f0b401'}, { color: '#ffea04'},
+        { color: '#87fc02'}, { color: '#00eef7'}, 
+        { color: '#a9eaf8'}, { color: '#3803f5'},
+        { color: '#8707f7'} ,{ color: '#f5a8e2'},
+        { color: '#cc5d31'}, { color: '#6a6d6d'},
       ],
+
+      //   colorArrayName : [
+      //   { name: 'default'}, { name: 'default'}, 
+      //   { name: 'default'}, { name: 'default'}, 
+      //   { name: 'default'}, { name: 'default'},  
+      //   { name: 'default'}, { name: 'default'}, 
+      //   { name: 'default'}, { name: 'default'}, 
+      //   { name: 'default'}, { name: 'default'}, 
+      // ],    
     }
   },
   methods: {
+
     changeColor: function (colorId) {
-      if (this.createNote == true) {
+      if (this.createNote == true) {        
         eventBus.$emit("getUpdatedColorOnNotes", colorId);
       } else {
         eventBus.$emit("getUpdated", colorData);
@@ -51,7 +68,7 @@ export default {
           color: colorId,
           noteIdList: [this.note],
         };
-        NoteService.changeCardColor(colorData).then(() => {
+        NoteService.changeCardColor(colorData).then(() => { 
           eventBus.$emit("getAfterUpdatedNoteList");
         });
       }
@@ -61,6 +78,14 @@ export default {
 </script>
 
 <style scoped>
+  .md-avatar {
+    margin: 36px;
+  }
+
+  .md-tooltip {
+    font-size: 20px;
+  }
+
 .color-palette {
   cursor: pointer;
 }
