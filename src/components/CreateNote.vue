@@ -73,7 +73,8 @@ export default {
         isArchived: this.isArchived,
         color: this.cardColor,
       };
-      NoteService.getAddNote(note).then((response) => {
+      NoteService.getAddNote(note)
+      .then((response) => {
         this.showSnackbar=true
         this.responseData = response.data;        
         this.result = "Note Add Successfully";        

@@ -57,11 +57,15 @@ export default {
         title: this.title,
         description: this.description,
       };
-      NoteService.updateNotes(updateData).then(() => {      
+      NoteService.updateNotes(updateData)
+      .then(() => {      
         this.showUpdateBox = false; 
         this.isArchived=false;      
         eventBus.$emit("closeDialogBox", this.showUpdateBox);
         eventBus.$emit("getAfterUpdatedNoteList");                 
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },

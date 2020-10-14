@@ -13,7 +13,7 @@
 
                 <!-- <md-tooltip @click="colorName()"
                   md-direction="bottom">
-                   <span> {{nameOfColor}} </span>
+                   <span> default </span>
                 </md-tooltip>            -->
            </div>
            
@@ -37,7 +37,6 @@ export default {
        setColor:"",
        noteId:'',
        showTooltip: false,
-       nameOfColor: "",
        colorArray : [
         { color: '#ffffff'}, { color: '#f61c08'}, 
         { color: '#f0b401'}, { color: '#ffea04'},
@@ -68,8 +67,12 @@ export default {
           color: colorId,
           noteIdList: [this.note],
         };
-        NoteService.changeCardColor(colorData).then(() => { 
+        NoteService.changeCardColor(colorData)
+        .then(() => { 
           eventBus.$emit("getAfterUpdatedNoteList");
+        })
+        .catch((error) => {
+          console.log(error);
         });
       }
     },

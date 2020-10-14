@@ -1,5 +1,6 @@
 <template>
   <div class="trash-container">
+    <md-progress-spinner :class="{visible:!visible}" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
     <div class="trash-part">
       <DisplayNotes
         v-bind:noteList="filteredList"
@@ -27,7 +28,8 @@ export default {
       iconCategory: "trash",
       showSnackbar:false, 
       result: "",
-      searchText:'',         
+      searchText:'', 
+      visible: false,        
     };
   },
   components: {
@@ -35,8 +37,14 @@ export default {
   },
   methods: {
     fetchTrashList: function () {
-      NoteService.fetchTrashNotesList().then((response) => {
+      this.visible = true;
+      NoteService.fetchTrashNotesList()
+      .then((response) => {
         this.trashList = response.data.data.data;
+        this.visible = false;
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },
@@ -49,7 +57,7 @@ export default {
       this.result = "Permanently Delete Note Successfully";       
     });
 
-    eventBus.$on("searchCard", (data) => {
+    eventBus.$on("searchNotesWithTitle", (data) => {
       this.searchText=data;
     });
   },
@@ -109,4 +117,13 @@ export default {
 .md-icon {
   cursor: pointer;
 }
+
+.md-progress-spinner {
+  margin-top: 15%;
+}
+
+.visible {
+  display: none;
+}
+
 </style>

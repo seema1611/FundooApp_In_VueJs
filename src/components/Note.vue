@@ -47,7 +47,7 @@ export default {
 
   created() {
     this.fetchNotes();
-     eventBus.$on("searchCard", (data) => {
+     eventBus.$on("searchNotesWithTitle", (data) => {
       this.searchText=data;
     })
     eventBus.$on("getAfterUpdatedNoteList", () => { 

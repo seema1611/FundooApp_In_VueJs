@@ -22,8 +22,12 @@ export default {
         isDeleted: true,
         noteIdList: [this.note],
       };
-      NoteService.DeletedNoteMoveToTrash(trashData).then(() => {                
+      NoteService.DeletedNoteMoveToTrash(trashData)
+      .then(() => {                
         eventBus.$emit("getAfterUpdatedNoteList");           
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },

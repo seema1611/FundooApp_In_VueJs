@@ -16,8 +16,12 @@ export default {
         isArchived: false,
         noteIdList: [this.noteId],
       };
-      NoteService.unarchiveNotes(noteData).then(() => {
+      NoteService.unarchiveNotes(noteData)
+      .then(() => {
         eventBus.$emit("unarchivedNote");
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },

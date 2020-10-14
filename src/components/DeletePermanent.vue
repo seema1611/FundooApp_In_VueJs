@@ -15,8 +15,12 @@ export default {
       const data = {
         noteIdList: [this.noteId],
       };
-      NoteService.deletePermanent(data).then(() => {
+      NoteService.deletePermanent(data)
+      .then(() => {
         eventBus.$emit("getDeletedInTrashList");
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },

@@ -17,11 +17,15 @@ export default {
         isArchived:true,
         noteIdList:[this.note]
       }
-      NoteService.archiveNotes(archiveData).then(()=>{
+      NoteService.archiveNotes(archiveData)
+      .then(()=>{
         eventBus.$emit("getAfterUpdatedNoteList");
       })
-    }
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+    },
+  },
 };
 </script>
 
