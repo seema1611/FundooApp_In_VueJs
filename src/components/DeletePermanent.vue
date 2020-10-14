@@ -3,6 +3,7 @@
     <md-icon @click.native="PermanentDelete">delete_forever</md-icon>
   </div>
 </template>
+
 <script>
 import NoteService from "../services/NoteService";
 import { eventBus } from "../main";

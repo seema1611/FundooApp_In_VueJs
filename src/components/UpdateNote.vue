@@ -11,9 +11,9 @@
         <md-field>
           <md-textarea
             v-model="description"
-            md-autogrow
-          ></md-textarea> </md-field
-        ><br />
+            md-autogrow>
+          </md-textarea>
+        </md-field><br />
         
         <div class="notebox-icons">
           <span>           
@@ -21,7 +21,8 @@
             <IconArchive v-bind:note="noteId" />
           </span>
           <button @click="closeDialogBox">Close</button>         
-        </div>               
+        </div>  
+
       </md-card>
     </md-dialog>
   </div>
@@ -44,12 +45,10 @@ export default {
       color: '',     
     };
   },
-
   components: {
     IconColorPalette,
     IconArchive,
   },
-
   methods: {
     closeDialogBox: function () {
       const updateData = {
@@ -69,13 +68,11 @@ export default {
       });
     },
   },
-
   created() {
     eventBus.$on("'getUpdated", (data) => {
       this.color = data;
     });
   },
-
   mounted() {
     this.noteId = this.$props.noteData.id;
     this.title = this.$props.noteData.title;

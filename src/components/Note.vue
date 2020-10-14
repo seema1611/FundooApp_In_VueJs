@@ -36,15 +36,13 @@ export default {
           }
         });
       });
-    },
-    
+    }, 
     fetchTrashList: function () {
       NoteService.fetchTrashNotesList().then((response) => {      
         this.noteList = response.data.data.data;
       });
     },
   },
-
   created() {
     this.fetchNotes();
      eventBus.$on("searchNotesWithTitle", (data) => {
@@ -56,7 +54,6 @@ export default {
     }); 
     eventBus.$emit("sendIdList",this.noteList.id)
   },
-
   computed:{
     filteredList:function(){
       return this.noteList.filter((note)=>{
@@ -64,7 +61,6 @@ export default {
       })
     }
   }
-
 };
 </script>
 
@@ -77,5 +73,4 @@ export default {
 .visible {
   display: none;
 }
-
 </style>

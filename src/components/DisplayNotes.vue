@@ -1,56 +1,58 @@
 <template>
   <div class="display-notes">
+
     <div 
-      class="note-cards" 
+      class="note-cards"
       v-for="note in noteList" 
       v-bind:key="note.id">
-
       <md-card md-with-hover
         v-bind:style="{ background: note.color }">
+
         <div 
           class="card-items" 
           @click="updateBoxData(note)">
-
-          <label 
-            class="content-part"
-            >{{ note.title }}</label><br />
-
-          <label 
-            class="description-part"
-            >{{ note.description }}</label><br />
-
+          <label class="content-part">
+            {{ note.title }}
+          </label><br />
+          <label class="description-part">
+            {{ note.description }}
+          </label><br />
         </div>
+
         <div 
           v-if="iconCategory == 'trash'" 
           class="notebox-icons">
           <DeletePermanent 
           v-bind:noteId="note.id" />
-        </div>    
+        </div>   
+
         <div 
           v-else-if="iconCategory == 'archive'" 
           class="icon-notes">
           <IconUnarchive v-bind:noteId="note.id"/>
-        </div>         
-        <div v-else class="icon-notes">
+        </div>  
+
+        <div 
+          v-else class="icon-notes">
           <IconColorPalette v-bind:note="note.id" />
           <IconArchive v-bind:note="note.id" />
           <DeleteNotes v-bind:note="note.id" /> 
         </div>
       </md-card>
     </div>
+
     <UpdateNote
       v-if="showUpdateBox"
       v-bind:showUpdateBox="showUpdateBox"
       v-bind:noteData="noteData"
     />
-      <md-snackbar 
-        md-position="left" 
-        :md-active.sync="showSnackbar" 
-        md-persistent>
+    <md-snackbar 
+      md-position="left" 
+      :md-active.sync="showSnackbar" 
+      md-persistent>
       <span>{{result}}</span>
     </md-snackbar> 
-  </div>
-  
+  </div> 
 </template>
 
 <script>

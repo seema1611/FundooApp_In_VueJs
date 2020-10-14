@@ -5,23 +5,26 @@
       <div @click="display()">
         <md-card :class="{header : isVisible}"> 
           <label class="title-first">Take a note....</label>
-          </md-card>
+        </md-card>
       </div> 
 
       <div id="notebox">
         <md-card id = "note-card" 
         :class="{header : !isVisible}"
          v-bind:style="{ background: cardColor }"> 
+
           <md-field md-inline>
             <label class="title">Title</label>
-            <md-input v-model="title"></md-input></md-field><br/>
+            <md-input v-model="title"></md-input>
+          </md-field><br/>
 
           <md-field md-inline>
             <label>Take a note....</label>
             <md-textarea
               v-model="description"
-              md-autogrow
-            ></md-textarea></md-field><br/>
+              md-autogrow>
+            </md-textarea>
+          </md-field><br/>
 
           <div class="notebox-icons">
             <span>
@@ -30,14 +33,16 @@
             </span>
             <button @click="addNote()">Close</button>
           </div>
+
           <md-snackbar 
             md-position="left" 
             :md-active.sync="showSnackbar" 
             md-persistent>
             <span>{{result}}</span>
-          </md-snackbar>
+          </md-snackbar> 
         </md-card>
       </div>
+
     </div>
   </div>
 </template>

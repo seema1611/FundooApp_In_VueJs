@@ -1,19 +1,25 @@
 <template>
   <div class="archive-display">
-    <md-progress-spinner :class="{visible:!visible}" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
+    <md-progress-spinner 
+      :class="{visible:!visible}" 
+      :md-stroke="3" 
+      md-mode="indeterminate">
+    </md-progress-spinner>
+    
     <DisplayNotes
       v-bind:noteList="filteredList"
       v-bind:iconCategory="iconCategory"
-    />
-      <md-snackbar 
-        md-position="left" 
-        :md-active.sync="showSnackbar" 
-        md-persistent>
+    />    
+    <md-snackbar 
+      md-position="left" 
+      :md-active.sync="showSnackbar" 
+      md-persistent>
       <span>{{result}}</span>
-    </md-snackbar>      
+    </md-snackbar> 
+
   </div>
-  
 </template>
+
 <script>
 import DisplayNotes from "./DisplayNotes";
 import NoteService from "../services/NoteService";

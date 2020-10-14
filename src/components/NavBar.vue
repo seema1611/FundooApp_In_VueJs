@@ -114,8 +114,7 @@ export default {
       lastName: "",
       email: "",
     };
-  },
-  
+  }, 
   methods: {
     toggleMenu: function () {
       if (this.showMenu == false) {
@@ -155,15 +154,14 @@ export default {
     this.lastName = localStorage.getItem("userlastname");
     this.email = localStorage.getItem("email");
   },
-
   watch: {
     searchText: function () {
       eventBus.$emit("searchNotesWithTitle", this.searchText);
     },
-  },
-    
+  },    
 };
 </script>
+
 <style scoped>
 .dashboard-container {
   display: flex;
@@ -299,7 +297,7 @@ img {
 
 .profile-email {
   font-family: Arial, Helvetica, sans-serif;
- font-size: 17px;
+  font-size: 17px;
   margin-top: -6%;
 }
 
@@ -312,7 +310,7 @@ img {
 }
 
 #signout :hover {
-   background-color: rgb(236, 229, 229);
+  background-color: rgb(236, 229, 229);
 }
 
 #manage {
@@ -323,18 +321,17 @@ img {
   color:  rgb(14, 12, 12);
   border-radius: 10px;
   font-size: 15px;
-   border: 1px solid black;
-   cursor: pointer;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 #manage :hover {
-   background-color: rgb(236, 229, 229);
+  background-color: rgb(236, 229, 229);
 }
 
 .md-drawer {
   width: 17%;
 }
-
 
 @media screen and (max-width: 1025px) {
   .navbar-items {

@@ -1,20 +1,26 @@
 <template>
   <div class="trash-container">
-    <md-progress-spinner :class="{visible:!visible}" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
+    <md-progress-spinner 
+      :class="{visible:!visible}" 
+      :md-stroke="3" 
+      md-mode="indeterminate">
+    </md-progress-spinner>
+
     <div class="trash-part">
       <DisplayNotes
         v-bind:noteList="filteredList"
         v-bind:iconCategory="iconCategory"
       />
     </div>
-      <md-snackbar 
-        md-position="left" 
-        :md-active.sync="showSnackbar" 
-        md-persistent>
+    <md-snackbar 
+      md-position="left" 
+      :md-active.sync="showSnackbar" 
+      md-persistent>
       <span>{{result}}</span>
     </md-snackbar> 
   </div>
 </template>
+
 <script>
 import NoteService from "../services/NoteService";
 import DisplayNotes from "./DisplayNotes";
@@ -56,7 +62,6 @@ export default {
       this.showSnackbar=true
       this.result = "Permanently Delete Note Successfully";       
     });
-
     eventBus.$on("searchNotesWithTitle", (data) => {
       this.searchText=data;
     });
@@ -125,5 +130,4 @@ export default {
 .visible {
   display: none;
 }
-
 </style>

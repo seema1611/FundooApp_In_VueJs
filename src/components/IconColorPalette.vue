@@ -5,18 +5,11 @@
       
       <md-menu-content >
         <div class="color-items">
-
            <div  class="color-array" v-for="(color,index ) in colorArray" 
               v-bind:key="index"
               v-bind:style="{background : color.color}"
               @click="changeColor(color.color)">
-
-                <!-- <md-tooltip @click="colorName()"
-                  md-direction="bottom">
-                   <span> default </span>
-                </md-tooltip>            -->
-           </div>
-           
+           </div>          
         </div>
       </md-menu-content>
 
@@ -44,20 +37,10 @@ export default {
         { color: '#a9eaf8'}, { color: '#3803f5'},
         { color: '#8707f7'} ,{ color: '#f5a8e2'},
         { color: '#cc5d31'}, { color: '#6a6d6d'},
-      ],
-
-      //   colorArrayName : [
-      //   { name: 'default'}, { name: 'default'}, 
-      //   { name: 'default'}, { name: 'default'}, 
-      //   { name: 'default'}, { name: 'default'},  
-      //   { name: 'default'}, { name: 'default'}, 
-      //   { name: 'default'}, { name: 'default'}, 
-      //   { name: 'default'}, { name: 'default'}, 
-      // ],    
+      ],   
     }
   },
   methods: {
-
     changeColor: function (colorId) {
       if (this.createNote == true) {        
         eventBus.$emit("getUpdatedColorOnNotes", colorId);
@@ -113,7 +96,6 @@ export default {
 .color-array{
   width: 22%;
   height: 35px;
-  /* padding: 11%; */
   border-radius: 50%;
   margin: 2px;
   border: 1px solid rgb(204, 204, 204);

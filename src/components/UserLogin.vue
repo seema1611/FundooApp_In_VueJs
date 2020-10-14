@@ -36,16 +36,16 @@
       </div>
       <md-button class="md-raised md-primary" @click="getLogin">Log In</md-button>
     </div>
-      <md-snackbar 
-        md-position="left" 
-        :md-active.sync="showSnackbar" 
-        md-persistent>
+
+    <md-snackbar 
+      md-position="left" 
+      :md-active.sync="showSnackbar" 
+      md-persistent>
       <span>{{result}}</span>
     </md-snackbar>
     <router-view></router-view>
   </div>
 </template>
-
 
 <script>
 import userService from "../services/UserService";
@@ -79,7 +79,6 @@ export default {
         email: this.email,
         password: this.password,
       };
-
       userService.getUserLogin(loginDetails).then((response) => {
         this.showSnackbar=true
         this.result = "Login Successfully";
@@ -109,7 +108,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .login-container {
