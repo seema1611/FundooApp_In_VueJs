@@ -8,8 +8,9 @@
            <div  class="color-array" v-for="(color,index ) in colorArray" 
               v-bind:key="index"
               v-bind:style="{background : color.color}"
-              @click="changeColor(color.color)">
-           </div>          
+              @click="changeColor(color.color)" >
+              <span class="tooltiptext">{{color.name}}</span>          
+           </div>
         </div>
       </md-menu-content>
 
@@ -29,15 +30,16 @@ export default {
        noteIdList: [],
        setColor:"",
        noteId:'',
-       showTooltip: false,
-       colorArray : [
-        { color: '#ffffff'}, { color: '#f61c08'}, 
-        { color: '#f0b401'}, { color: '#ffea04'},
-        { color: '#87fc02'}, { color: '#00eef7'}, 
-        { color: '#a9eaf8'}, { color: '#3803f5'},
-        { color: '#8707f7'} ,{ color: '#f5a8e2'},
-        { color: '#cc5d31'}, { color: '#6a6d6d'},
-      ],   
+       showTooltip: false,  
+
+        colorArray : [
+        { color: '#ffffff', name: 'Default' }, { color: '#f61c08', name: 'Red'}, 
+        { color: '#f0b401', name: 'Orange' }, { color: '#ffea04' , name: 'Yellow'},
+        { color: '#87fc02', name: 'Green'}, { color: '#00eef7', name: 'Teal'}, 
+        { color: '#a9eaf8', name: 'Blue'}, { color: '#3803f5', name: 'Dark blue'},
+        { color: '#8707f7', name: 'Purple'} ,{ color: '#f5a8e2', name: 'Pink'},
+        { color: '#cc5d31', name: 'Brown'}, { color: '#6a6d6d', name: 'Grey'},
+      ], 
     }
   },
   methods: {
@@ -64,13 +66,13 @@ export default {
 </script>
 
 <style scoped>
-  .md-avatar {
-    margin: 36px;
-  }
+.md-avatar {
+  margin: 36px;
+}
 
-  .md-tooltip {
-    font-size: 20px;
-  }
+.md-tooltip {
+  font-size: 15px;
+}
 
 .color-palette {
   cursor: pointer;
@@ -99,5 +101,24 @@ export default {
   border-radius: 50%;
   margin: 2px;
   border: 1px solid rgb(204, 204, 204);
+  position: relative;
+  display: inline-block;
 }
+
+.color-array .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+.color-array:hover .tooltiptext {
+  visibility: visible;
+}
+
 </style>

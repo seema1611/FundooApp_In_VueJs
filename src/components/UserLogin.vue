@@ -21,13 +21,13 @@
     <md-field :class="emailValidation">
       <label>Email Id</label>
       <md-input v-model="email" required></md-input>
-      <span class="md-error">Email is Required</span>
+      <span class="md-error">Email is Not Here</span>
     </md-field>
 
     <md-field :class="passwordValidation">
       <label>Password</label>
       <md-input type="password" v-model="password" required></md-input>
-      <span class="md-error">Password is Required</span>
+      <span class="md-error">Password is Not Here</span>
     </md-field>
 
     <div class="login-button">

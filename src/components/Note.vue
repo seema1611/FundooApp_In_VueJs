@@ -1,7 +1,11 @@
 <template>
   <div>
     <CreateNote />
-    <md-progress-spinner :class="{visible:!visible}" :md-stroke="2" md-mode="indeterminate"></md-progress-spinner>
+    <md-progress-spinner 
+      :class="{visible:!visible}" 
+      :md-stroke="2" 
+      md-mode="indeterminate">
+    </md-progress-spinner>
     <DisplayNote v-bind:noteList="filteredList"  />
   </div>
 </template>
@@ -38,8 +42,12 @@ export default {
       });
     }, 
     fetchTrashList: function () {
-      NoteService.fetchTrashNotesList().then((response) => {      
+      NoteService.fetchTrashNotesList()
+      .then((response) => {      
         this.noteList = response.data.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },
@@ -52,11 +60,11 @@ export default {
       this.noteList = [];
       this.fetchNotes();
     }); 
-    eventBus.$emit("sendIdList",this.noteList.id)
   },
   computed:{
     filteredList:function(){
-      return this.noteList.filter((note)=>{
+      return this.noteList
+      .filter((note)=>{
         return note.title.match(this.searchText);
       })
     }

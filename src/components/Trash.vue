@@ -68,7 +68,8 @@ export default {
   },
   computed:{
     filteredList:function(){
-      return this.trashList.filter((note)=>{
+      return this.trashList
+      .filter((note)=>{
         return note.title.match(this.searchText);
       })
     }

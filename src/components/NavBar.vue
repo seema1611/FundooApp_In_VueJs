@@ -93,7 +93,7 @@
         </md-list>
       </md-drawer>
       <div class="component">
-        <router-view></router-view>
+      <router-view></router-view>
       </div>
     </div>
   </div>
@@ -114,6 +114,11 @@ export default {
       lastName: "",
       email: "",
     };
+  }, 
+  watch: {
+    searchText: function () {
+      eventBus.$emit("searchNotesWithTitle", this.searchText);
+    },
   }, 
   methods: {
     toggleMenu: function () {
@@ -153,12 +158,7 @@ export default {
     this.firstName = localStorage.getItem("userfirstname");
     this.lastName = localStorage.getItem("userlastname");
     this.email = localStorage.getItem("email");
-  },
-  watch: {
-    searchText: function () {
-      eventBus.$emit("searchNotesWithTitle", this.searchText);
-    },
-  },    
+  },   
 };
 </script>
 
